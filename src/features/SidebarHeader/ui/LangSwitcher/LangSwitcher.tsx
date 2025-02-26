@@ -1,30 +1,29 @@
-import { Dropdown } from '@/shared'
+import { Arrow, Dropdown } from '@/shared'
 import { useState } from 'react'
 import styled from 'styled-components'
+import { LANGS } from '../../model'
 
 export const LangSwitcher = () => {
-  const langs = ['RU', 'EN']
-
   const [isModalOpen, setIsModalOpen] = useState(false)
 
-  const [langIndex, setLangIndex] = useState(0)
+  const [selected, setSelected] = useState('RU')
 
-  const onLangChangeHandler = (index: number) => {
-    setLangIndex(index)
+  const onLangChangeHandler = (id: string) => {
+    setSelected(id)
   }
 
   return (
     <Dropdown
-      options={langs}
+      options={LANGS}
       top="30px"
       getModalState={setIsModalOpen}
       onOptionChange={onLangChangeHandler}
-      indexOfSelected={langIndex}
+      selected={selected}
     >
       <LangSwitcherContainer>
         <img src="/lang.svg" alt="language" />
-        <CurrentLang>{langs[langIndex]}</CurrentLang>
-        <Arrow src="/arrow-up.svg" alt="arrow" $isModalOpen={isModalOpen} />
+        <CurrentLang>{selected}</CurrentLang>
+        <Arrow isArrowUp={isModalOpen} />
       </LangSwitcherContainer>
     </Dropdown>
   )
@@ -40,8 +39,4 @@ const LangSwitcherContainer = styled.div`
 const CurrentLang = styled.span`
   font-size: 16px;
   font-weight: 600;
-`
-const Arrow = styled.img<{ $isModalOpen: boolean }>`
-  transition: 0.2s;
-  transform: rotate(${({ $isModalOpen }) => ($isModalOpen ? '0deg' : '180deg')});
 `

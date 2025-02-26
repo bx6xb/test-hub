@@ -1,33 +1,19 @@
-import { ReactNode, useState } from 'react'
+import { useState } from 'react'
 import styled, { keyframes } from 'styled-components'
-
-type Position = {
-  top?: string
-  right?: string
-  bottom?: string
-  left?: string
-}
-
-type Props = {
-  options: ReactNode[]
-  children: ReactNode
-  indexOfSelected?: number
-  getModalState(isOpen: boolean): void
-  onOptionChange?: (index: number) => void
-} & Position
+import { Position, Props } from './types'
 
 export const Dropdown = ({
   options,
   children,
   getModalState,
   onOptionChange,
-  indexOfSelected = 0,
+  selected,
   ...position
 }: Props) => {
   const [isOpen, setIsOpen] = useState(false)
 
   const setIsOpenHandler = () => {
-    getModalState(!isOpen)
+    getModalState && getModalState(!isOpen)
     setIsOpen(!isOpen)
   }
 
@@ -38,13 +24,13 @@ export const Dropdown = ({
       <DropdownWrapper $isOpen={isOpen} {...position}>
         {isOpen && (
           <DropdownModal>
-            {options.map((option, i) => (
+            {options.map(({ id, label }) => (
               <DropdownOption
-                key={i}
-                $isSelected={indexOfSelected === i}
-                onClick={() => onOptionChange && onOptionChange(i)}
+                key={id}
+                $isSelected={selected === id}
+                onClick={() => onOptionChange(id)}
               >
-                {option}
+                {label}
               </DropdownOption>
             ))}
           </DropdownModal>
@@ -98,7 +84,6 @@ const DropdownModal = styled.div`
 `
 const DropdownOption = styled.div<{ $isSelected: boolean }>`
   display: flex;
-  justify-content: center;
   align-items: center;
   border-radius: 8px;
   padding: 12px;
