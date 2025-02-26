@@ -1,10 +1,12 @@
-import '@shared/styles/styles.css'
-import { StrictMode } from 'react'
+import '@fontsource/ibm-plex-sans'
 import { createRoot } from 'react-dom/client'
 import { App } from './app'
+import { GlobalStyles } from './shared'
+import { Providers } from './app/Providers'
 
 createRoot(document.getElementById('root')!).render(
-  <StrictMode>
+  <Providers>
     <App />
-  </StrictMode>
+    <GlobalStyles />
+  </Providers>
 )
