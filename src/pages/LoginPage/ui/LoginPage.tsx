@@ -4,11 +4,11 @@ import { z } from 'zod'
 import { loginSchema } from '../model'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useAppDispatch } from '@/shared'
-import { setIsAuth } from '@/entities'
+import { login } from '@/entities'
 
 type Inputs = z.infer<typeof loginSchema>
 
-export const Login = () => {
+export const LoginPage = () => {
   const dispatch = useAppDispatch()
 
   const {
@@ -20,7 +20,7 @@ export const Login = () => {
   })
 
   const onSubmitHandler: SubmitHandler<Inputs> = data => {
-    dispatch(setIsAuth(data))
+    dispatch(login(data))
   }
 
   const emailError = errors.email?.message
