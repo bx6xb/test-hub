@@ -19,7 +19,7 @@ export const ChatWindow = () => {
 const ChatWindowContainer = styled.div`
   background-color: #121825;
   border-radius: 18px;
-  flex-grow: 1;
+  flex: 1;
   padding: 20px;
 `
 const ContentContainer = styled.div`

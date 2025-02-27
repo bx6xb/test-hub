@@ -1,45 +1,21 @@
-import styled from 'styled-components'
-import { useDeleteChatMutation, useGetChatId, ChatType } from '@/shared'
+import { ChatType, ChatRenameInput, useSetChatNameOrModelMutation, ChatPreview } from '@/shared'
+import { useState } from 'react'
 
 export const Chat = ({ name, id }: ChatType) => {
-  const { chatId, setChatId } = useGetChatId()
+  const [isEditMode, setIsEditMode] = useState(false)
 
-  const [deleteChat] = useDeleteChatMutation()
+  const [renameChat] = useSetChatNameOrModelMutation()
 
-  const deleteChatHandler = () => deleteChat(id)
+  const toggleEditMode = () => setIsEditMode(!isEditMode)
 
-  const setSelectedChatIdHandler = () => setChatId(id)
+  const onSubmit = (name: string) => {
+    renameChat({ name, chatId: id })
+    toggleEditMode()
+  }
 
-  return (
-    <ChatContainer $isSelected={chatId === id}>
-      <ChatName onClick={setSelectedChatIdHandler}>
-        <img src="/chat.svg" alt="chat icon" />
-        {name}
-      </ChatName>
-
-      <img src="/trash.svg" alt="delete chat" onClick={deleteChatHandler} />
-    </ChatContainer>
+  return isEditMode ? (
+    <ChatRenameInput name={name} onSubmit={onSubmit} />
+  ) : (
+    <ChatPreview id={id} chatName={name} toggleEditMode={toggleEditMode} />
   )
 }
-
-const ChatContainer = styled.div<{ $isSelected: boolean }>`
-  display: flex;
-  justify-content: space-between;
-  align-content: center;
-  gap: 20px;
-
-  opacity: ${({ $isSelected }) => ($isSelected ? 1 : 0.4)};
-
-  & > img {
-    cursor: pointer;
-  }
-`
-const ChatName = styled.div`
-  display: flex;
-  gap: 8px;
-  align-content: center;
-  font-size: 16px;
-  font-weight: 500;
-  flex: 1;
-  cursor: pointer;
-`

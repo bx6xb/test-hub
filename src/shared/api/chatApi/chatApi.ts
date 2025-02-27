@@ -1,5 +1,11 @@
 import { baseApi } from '@/shared'
-import { AddChatBody, FetchChatsQueryParams, FetchChatsResponse, PartialChat } from './types'
+import {
+  AddChatBody,
+  FetchChatsQueryParams,
+  FetchChatsResponse,
+  PartialChat,
+  SetChatNameOrModelParams,
+} from './types'
 
 export const chatApi = baseApi.injectEndpoints({
   endpoints: builder => ({
@@ -25,7 +31,20 @@ export const chatApi = baseApi.injectEndpoints({
       }),
       invalidatesTags: ['chat'],
     }),
+    setChatNameOrModel: builder.mutation<PartialChat, SetChatNameOrModelParams>({
+      query: ({ chatId, ...body }) => ({
+        url: `chat/${chatId}`,
+        method: 'PATCH',
+        body,
+      }),
+      invalidatesTags: ['chat'],
+    }),
   }),
 })
 
-export const { useFetchChatsQuery, useAddChatMutation, useDeleteChatMutation } = chatApi
+export const {
+  useFetchChatsQuery,
+  useAddChatMutation,
+  useDeleteChatMutation,
+  useSetChatNameOrModelMutation,
+} = chatApi

@@ -35,3 +35,14 @@ export type FetchChatsQueryParams = {
   groupId?: string
   search?: string
 }
+
+// set chat name or model
+export type SetChatNameOrModelParams = {
+  chatId: string
+  name: string
+  highlight?: string
+  modelId?: string
+  modelFunctionId?: string
+  initial?: boolean
+  groupId?: string
+}
