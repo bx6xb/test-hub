@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import styled, { keyframes } from 'styled-components'
+import styled, { css, keyframes } from 'styled-components'
 import { Position, Props } from './types'
 
 export const Dropdown = ({
@@ -18,19 +18,27 @@ export const Dropdown = ({
     setIsOpen(!isOpen)
   }
 
-  useEffect(() => {
-    if (isOpen && dropdownModalRef.current) {
-      dropdownModalRef.current.focus()
+  const onModalBlur = () => {
+    if (isOpen) {
+      toggleIsOpenHandler()
     }
-  }, [isOpen])
+  }
+
+  const onChildrenClick = () => {
+    if (!isOpen) {
+      toggleIsOpenHandler()
+
+      setTimeout(() => dropdownModalRef.current && dropdownModalRef.current.focus(), 0)
+    }
+  }
 
   return (
     <DropdownContainer>
-      <div onClick={toggleIsOpenHandler}>{children}</div>
+      <div onMouseDown={onChildrenClick}>{children}</div>
 
       <DropdownWrapper $isOpen={isOpen} {...position}>
         {isOpen && (
-          <DropdownModal ref={dropdownModalRef} onBlur={toggleIsOpenHandler} tabIndex={-1}>
+          <DropdownModal ref={dropdownModalRef} onBlur={onModalBlur} tabIndex={-1}>
             {options.map(({ id, label }) => (
               <DropdownOption
                 key={id}
@@ -98,5 +106,9 @@ const DropdownOption = styled.div<{ $isSelected: boolean }>`
   transition: 0.2s;
   cursor: pointer;
 
-  ${({ $isSelected }) => $isSelected && 'background-color: #313e62;'}
+  ${({ $isSelected }) =>
+    $isSelected &&
+    css`
+      background-color: #313e62;
+    `}
 `

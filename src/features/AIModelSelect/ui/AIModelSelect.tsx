@@ -37,11 +37,11 @@ export const AIModelSelect = () => {
 }
 
 const Select = styled.div`
-  width: 147px;
+  min-width: 147px;
   height: 40px;
   padding: 10px 16px;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   gap: 10px;
   border: 1px solid #313e62;
