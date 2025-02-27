@@ -12,7 +12,7 @@ export const UserCard = () => {
   return (
     <UserCardContainer>
       <UserInfo>
-        <img src="/user.svg" alt="user avatar" />
+        <img src="/user-with-border.svg" alt="user avatar" />
 
         <NameAndWallet>
           <Name>{username}</Name>
