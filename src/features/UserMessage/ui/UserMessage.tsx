@@ -41,7 +41,7 @@ const Message = styled.div`
 
   ::selection {
     color: #4785ff;
-    background-color: #fff;
+    background-color: var(--white-color);
   }
 `
 const MessageText = styled.p`

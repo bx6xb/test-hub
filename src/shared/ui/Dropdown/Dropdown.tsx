@@ -86,8 +86,8 @@ const DropdownWrapper = styled.div<Position & { $isOpen: boolean }>`
 const DropdownModal = styled.div`
   display: flex;
   flex-direction: column;
-  background-color: #121825;
-  border: 1px solid #313e62;
+  background-color: var(--secondary-color);
+  border: 1px solid var(--border-color);
   border-radius: 8px;
   padding: 8px;
   outline: none;
@@ -103,6 +103,6 @@ const DropdownOption = styled.div<{ $isSelected: boolean }>`
   ${({ $isSelected }) =>
     $isSelected &&
     css`
-      background-color: #313e62;
+      background-color: var(--border-color);
     `}
 `

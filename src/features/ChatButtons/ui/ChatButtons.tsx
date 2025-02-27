@@ -27,11 +27,11 @@ const ChatButtonsContainer = styled.div`
 const AddChat = styled.button`
   width: 38px;
   height: 38px;
-  border: 1px solid #313e62;
-  background-color: #1c64f2;
+  border: 1px solid var(--border-color);
+  background-color: var(--primary-color);
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid #313e62;
+  border: 1px solid var(--border-color);
   border-radius: 8px;
 `

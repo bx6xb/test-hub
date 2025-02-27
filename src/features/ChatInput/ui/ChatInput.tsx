@@ -52,14 +52,14 @@ const ChatInputContainer = styled.form`
 const Input = styled.input`
   width: 100%;
   height: 66px;
-  border: 1px solid #313e62;
+  border: 1px solid var(--border-color);
   border-radius: 10px;
   background-color: transparent;
   padding: 0 20px;
-  color: white;
+  color: var(--white-color);
 
   &::placeholder {
-    color: #616d8d;
+    color: var(--input-placeholder-color);
   }
 `
 const SendMessage = styled.button`
@@ -68,7 +68,7 @@ const SendMessage = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #1c64f2;
+  background-color: var(--primary-color);
   border-radius: 8px;
   position: absolute;
   right: 20px;

@@ -54,7 +54,7 @@ const AIVersion = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #222b44;
+  background-color: var(--accent-bg);
   border-radius: 14px;
   padding: 4px 12px;
   font-size: 14px;

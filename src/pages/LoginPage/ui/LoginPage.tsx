@@ -50,8 +50,8 @@ export const LoginPage = () => {
 const Form = styled.form`
   width: 459px;
   border-radius: 16px;
-  border: 1px solid #313e62;
-  background-color: #222b44;
+  border: 1px solid var(--border-color);
+  background-color: var(--accent-bg);
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -67,7 +67,7 @@ const FormHeader = styled.h2`
   margin-bottom: 4px;
 `
 const Label = styled.label`
-  color: white;
+  color: var(--white-color);
   font-size: 16px;
   font-weight: 400;
   display: flex;
@@ -75,14 +75,14 @@ const Label = styled.label`
   gap: 8px;
 `
 const Input = styled.input`
-  color: white;
-  background-color: #121825;
-  border: 1px solid #313e62;
+  color: var(--white-color);
+  background-color: var(--secondary-color);
+  border: 1px solid var(--border-color);
   border-radius: 8px;
   padding: 16px;
 
   &::placeholder {
-    color: #616d8d;
+    color: var(--input-placeholder-color);
   }
 `
 const Error = styled.span`
@@ -93,6 +93,6 @@ const Button = styled.button`
   height: 52px;
   border-radius: 8px;
   border: none;
-  background-color: #1c64f2;
+  background-color: var(--primary-color);
   box-shadow: 0 1px 1px 0 rgba(255, 255, 255, 40%);
 `

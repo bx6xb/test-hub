@@ -20,13 +20,13 @@ export const Sidebar = () => {
 const SidebarContainer = styled.aside`
   width: 324px;
   height: 100%;
-  background-color: #121825;
+  background-color: var(--secondary-color);
   border-radius: 18px;
   padding: 20px 16px;
   display: flex;
   flex-direction: column;
 `
 const Line = styled.hr`
-  border: 1px solid #313e62;
+  border: 1px solid var(--border-color);
   margin-bottom: 16px;
 `

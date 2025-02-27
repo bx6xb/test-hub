@@ -30,7 +30,7 @@ const UserCardContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border: 1px solid #313e62;
+  border: 1px solid var(--border-color);
   border-radius: 18px;
   padding: 16px;
 

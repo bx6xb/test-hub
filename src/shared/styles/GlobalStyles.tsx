@@ -19,6 +19,15 @@ export const GlobalStyles = createGlobalStyle`
     unicode-range: U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;
   }
 
+  :root {
+    --primary-color: #1C64F2;
+    --secondary-color: #121825;
+    --accent-bg: #222b44;
+    --border-color: #313E62;
+    --white-color: #fff;
+    --input-placeholder-color: #616d8d;
+  }
+
   *, *::before, *::after {
     margin: 0;
     padding: 0;
@@ -27,14 +36,14 @@ export const GlobalStyles = createGlobalStyle`
 
   body {
     font-family: 'IBM Plex Sans', sans-serif;
-    color: white;
+    color: var(--white-color);
     background-color: #0E0C15;
   }
 
   button {
     all: unset;
     cursor: pointer;
-    color: white;
+    color: var(--white-color);
   }
 
   a {
@@ -46,7 +55,7 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   ::-webkit-scrollbar-track {
-    background: rgba(from white r g b / .5); 
+    background: rgba(from var(--white-color) r g b / .5); 
     border-radius: 4px;
   }
 

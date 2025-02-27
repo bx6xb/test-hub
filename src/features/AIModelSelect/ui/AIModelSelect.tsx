@@ -44,7 +44,7 @@ const Select = styled.div`
   justify-content: flex-start;
   align-items: center;
   gap: 10px;
-  border: 1px solid #313e62;
+  border: 1px solid var(--border-color);
   border-radius: 10px;
   cursor: pointer;
   user-select: none;

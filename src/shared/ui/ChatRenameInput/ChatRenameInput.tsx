@@ -51,9 +51,9 @@ const Form = styled.form`
 `
 const Input = styled.input`
   flex: 1;
-  border: 2px solid #1c64f2;
+  border: 2px solid var(--primary-color);
   padding: 2px;
   border-radius: 3px;
-  color: white;
+  color: var(--white-color);
   background-color: transparent;
 `
