@@ -1,4 +1,3 @@
-import { useEffect } from 'react'
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 import { checkIsAuth } from '@/entities'
 import { ProtectedRoute, useAppDispatch, useAppSelector } from '@/shared'
@@ -8,9 +7,11 @@ export const App = () => {
   const isAuth = useAppSelector(state => state.authSlice.isAuth)
   const dispatch = useAppDispatch()
 
-  useEffect(() => {
+  if (isAuth === null) {
     dispatch(checkIsAuth())
-  }, [])
+
+    return null
+  }
 
   return (
     <BrowserRouter>

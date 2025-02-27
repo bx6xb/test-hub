@@ -4,11 +4,11 @@ import { getUsername } from '../lib'
 import { UserData } from '@/shared'
 
 type AuthState = {
-  isAuth: boolean
+  isAuth: boolean | null
   username: string
 }
 
-const initialState: AuthState = { isAuth: false, username: '' }
+const initialState: AuthState = { isAuth: null, username: '' }
 
 export const authSlice = createSlice({
   name: 'authSlice',

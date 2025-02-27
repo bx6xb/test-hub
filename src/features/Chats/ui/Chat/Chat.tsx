@@ -1,22 +1,20 @@
 import styled from 'styled-components'
 import { ChatType, useDeleteChatMutation } from '../../api'
-import { useAppDispatch, useAppSelector } from '@/shared'
-import { setSelectedChatId } from '@/entities'
+import { useGetChatId } from '@/shared'
 
 type Props = ChatType
 
 export const Chat = ({ name, id }: Props) => {
-  const selectedChatId = useAppSelector(state => state.appSlice.selectedChatId)
-  const dispatch = useAppDispatch()
+  const { chatId, setChatId } = useGetChatId()
 
   const [deleteChat] = useDeleteChatMutation()
 
   const deleteChatHandler = () => deleteChat(id)
 
-  const setSelectedChatIdHandler = () => dispatch(setSelectedChatId(id))
+  const setSelectedChatIdHandler = () => setChatId(id)
 
   return (
-    <ChatContainer $isSelected={selectedChatId === id}>
+    <ChatContainer $isSelected={chatId === id}>
       <ChatName onClick={setSelectedChatIdHandler}>
         <img src="/chat.svg" alt="chat icon" />
         {name}

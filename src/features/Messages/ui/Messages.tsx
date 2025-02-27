@@ -1,19 +1,19 @@
 import { AIMessage, UserMessage } from '@/features'
 import styled from 'styled-components'
 import { useLazyFetchMessagesQuery } from '../api'
-import { getTimeFromIsoDate, useAppSelector } from '@/shared'
+import { getTimeFromIsoDate, useGetChatId } from '@/shared'
 import { useEffect } from 'react'
 
 export const Messages = () => {
-  const id = useAppSelector(state => state.appSlice.selectedChatId)
+  const { chatId } = useGetChatId()
 
   const [fetchMessages, { data: messages }] = useLazyFetchMessagesQuery()
 
   useEffect(() => {
-    if (id) {
-      fetchMessages({ id })
+    if (chatId) {
+      fetchMessages({ chatId })
     }
-  }, [id])
+  }, [chatId])
 
   return (
     <MessagesContainer>

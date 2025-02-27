@@ -178,6 +178,6 @@ export type FetchMessagesResponse = {
 }
 
 export type FetchMessagesData = {
-  id: string
+  chatId: string
   page?: number
 }
