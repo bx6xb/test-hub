@@ -20,14 +20,16 @@ export const UserCard = () => {
         </NameAndWallet>
       </UserInfo>
 
-      <img src="/logout.svg" alt="logout" onClick={logoutHandler} />
+      <img src="/logout.svg" alt="logout" onClick={logoutHandler} width={16} height={16} />
     </UserCardContainer>
   )
 }
 
 const UserCardContainer = styled.div`
+  height: 72px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   border: 1px solid #313e62;
   border-radius: 18px;
   padding: 16px;
