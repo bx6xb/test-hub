@@ -19,5 +19,5 @@ export const baseApi = createApi({
   reducerPath: 'api',
   baseQuery,
   endpoints: () => ({}),
-  tagTypes: ['chat', 'message'],
+  tagTypes: ['chat', 'messages'],
 })

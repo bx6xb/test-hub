@@ -1,9 +1,9 @@
 import styled from 'styled-components'
-import { useGetChatsQuery } from '../api'
+import { useFetchChatsQuery } from '../api'
 import { Chat } from './Chat'
 
 export const Chats = () => {
-  const { data } = useGetChatsQuery({})
+  const { data } = useFetchChatsQuery({})
 
   return <ChatsContainer>{data?.data.map(chat => <Chat key={chat.id} {...chat} />)}</ChatsContainer>
 }

@@ -1,14 +1,11 @@
-import { AIMessage, AIModelSelect, ChatInput, UserMessage } from '@/features'
+import { AIModelSelect, ChatInput, Messages } from '@/features'
 import styled from 'styled-components'
 
 export const ChatWindow = () => {
   return (
     <ChatWindowContainer>
       <ContentContainer>
-        <Messages>
-          <UserMessage messageText="ChatWindow" time="9:30" />
-          <AIMessage />
-        </Messages>
+        <Messages />
 
         <SelectAndInput>
           <AIModelSelect />
@@ -33,13 +30,6 @@ const ContentContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 20px;
-`
-const Messages = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  flex: 1;
-  overflow-y: auto;
 `
 const SelectAndInput = styled.div`
   display: flex;

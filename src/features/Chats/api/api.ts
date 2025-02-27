@@ -3,7 +3,7 @@ import { DeleteChatResponse, GetChatsQueryParams, GetChatsResponse } from './typ
 
 export const chatsApi = baseApi.injectEndpoints({
   endpoints: builder => ({
-    getChats: builder.query<GetChatsResponse, GetChatsQueryParams>({
+    fetchChats: builder.query<GetChatsResponse, GetChatsQueryParams>({
       query: params => ({
         url: 'chat/list',
         params,
@@ -20,4 +20,4 @@ export const chatsApi = baseApi.injectEndpoints({
   }),
 })
 
-export const { useGetChatsQuery, useDeleteChatMutation } = chatsApi
+export const { useFetchChatsQuery, useDeleteChatMutation } = chatsApi

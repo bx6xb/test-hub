@@ -4,11 +4,14 @@ import { SubmitHandler, useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { inputSchema } from '../model'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { useAppSelector } from '@/shared'
 
 type Inputs = z.infer<typeof inputSchema>
 
 export const ChatInput = () => {
-  const [sendMessage, result] = useSendMessageMutation()
+  const chatId = useAppSelector(state => state.appSlice.selectedChatId)
+
+  const [sendMessage] = useSendMessageMutation()
 
   const { register, handleSubmit } = useForm<Inputs>({
     resolver: zodResolver(inputSchema),
@@ -20,11 +23,9 @@ export const ChatInput = () => {
   const onFormSubmit: SubmitHandler<Inputs> = ({ message }) => {
     sendMessage({
       message,
-      chatId: '8f76d141-3b47-452f-bba6-a29665a07f2c',
+      chatId,
     })
   }
-
-  console.log('result', result)
 
   return (
     <ChatInputContainer onSubmit={handleSubmit(onFormSubmit)}>

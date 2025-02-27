@@ -9,7 +9,7 @@ export const messageApi = baseApi.injectEndpoints({
         body,
         method: 'POST',
       }),
-      invalidatesTags: ['message'],
+      invalidatesTags: ['messages'],
     }),
   }),
 })

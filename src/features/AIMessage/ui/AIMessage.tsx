@@ -1,11 +1,14 @@
 import { CopyText } from '@/shared'
 import styled from 'styled-components'
 
-export const AIMessage = () => {
+type Props = {
+  messageText: string
+  time: string
+}
+
+export const AIMessage = ({ messageText, time }: Props) => {
   const aimodel = 'ChatGPT'
   const aiversion = 'gpt-3.5-turbo'
-  const messageText = 'Привет! Чем я могу помочь?'
-  const time = '9:30'
 
   return (
     <AIMessageContainer>
