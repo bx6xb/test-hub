@@ -22,4 +22,22 @@ export const GlobalStyles = createGlobalStyle`
   a {
     text-decoration: none;
   }
+
+  ::-webkit-scrollbar {
+    width: 8px; 
+  }
+
+  ::-webkit-scrollbar-track {
+    background: rgba(from white r g b / .5); 
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #2D4F92; 
+    border-radius: 4px; 
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #357abd;
+  }
 `
