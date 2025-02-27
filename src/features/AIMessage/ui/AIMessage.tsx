@@ -58,7 +58,7 @@ const AIVersion = styled.div`
   border-radius: 14px;
   padding: 4px 12px;
   font-size: 14px;
-  font-weight: 50;
+  font-weight: 500;
 `
 const Message = styled.div`
   display: flex;

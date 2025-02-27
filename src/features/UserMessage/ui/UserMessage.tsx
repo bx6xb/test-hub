@@ -46,6 +46,7 @@ const Message = styled.div`
 `
 const MessageText = styled.p`
   font-size: 18px;
+  font-weight: 400;
 `
 const Time = styled.span`
   font-size: 12px;

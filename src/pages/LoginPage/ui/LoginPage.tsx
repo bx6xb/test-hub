@@ -69,7 +69,7 @@ const FormHeader = styled.h2`
 const Label = styled.label`
   color: white;
   font-size: 16px;
-  font-weight: 40;
+  font-weight: 400;
   display: flex;
   flex-direction: column;
   gap: 8px;
