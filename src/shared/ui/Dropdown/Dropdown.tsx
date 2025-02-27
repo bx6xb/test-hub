@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import styled, { keyframes } from 'styled-components'
 import { Position, Props } from './types'
 
@@ -11,11 +11,18 @@ export const Dropdown = ({
   ...position
 }: Props) => {
   const [isOpen, setIsOpen] = useState(false)
+  const dropdownModalRef = useRef<HTMLDivElement | null>(null)
 
   const setIsOpenHandler = () => {
     getModalState && getModalState(!isOpen)
     setIsOpen(!isOpen)
   }
+
+  useEffect(() => {
+    if (isOpen && dropdownModalRef.current) {
+      dropdownModalRef.current.focus()
+    }
+  }, [isOpen])
 
   return (
     <DropdownContainer>
@@ -23,7 +30,7 @@ export const Dropdown = ({
 
       <DropdownWrapper $isOpen={isOpen} {...position}>
         {isOpen && (
-          <DropdownModal>
+          <DropdownModal ref={dropdownModalRef} onBlur={setIsOpenHandler} tabIndex={-1}>
             {options.map(({ id, label }) => (
               <DropdownOption
                 key={id}
@@ -81,6 +88,7 @@ const DropdownModal = styled.div`
   border: 1px solid #313e62;
   border-radius: 8px;
   padding: 8px;
+  outline: none;
 `
 const DropdownOption = styled.div<{ $isSelected: boolean }>`
   display: flex;
