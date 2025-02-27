@@ -2,6 +2,7 @@ import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 import { checkIsAuth } from '@/entities'
 import { ProtectedRoute, useAppDispatch, useAppSelector } from '@/shared'
 import { ChatPage, LoginPage } from '@/pages'
+import { Alert } from '@/features'
 
 export const App = () => {
   const isAuth = useAppSelector(state => state.authSlice.isAuth)
@@ -26,6 +27,8 @@ export const App = () => {
 
         <Route element={<Navigate replace to={'/chat'} />} path={'*'} />
       </Routes>
+
+      <Alert />
     </BrowserRouter>
   )
 }

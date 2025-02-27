@@ -1,3 +1,5 @@
+import { addAlert } from '@/entities'
+import { useAppDispatch } from '@/shared/hooks'
 import styled from 'styled-components'
 
 type Props = {
@@ -5,12 +7,14 @@ type Props = {
 }
 
 export const CopyText = ({ text }: Props) => {
+  const dispatch = useAppDispatch()
+
   const copyTextHandler = async () => {
     try {
       await navigator.clipboard.writeText(text)
-      alert('Текст скопирован!')
+      dispatch(addAlert({ message: 'Текст скопирован!', type: 'success' }))
     } catch (err) {
-      alert('Ошибка копирования!')
+      dispatch(addAlert({ message: 'Ошибка копирования!', type: 'error' }))
     }
   }
 

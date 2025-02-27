@@ -3,6 +3,8 @@ import { SubmitHandler, useForm } from 'react-hook-form'
 import styled from 'styled-components'
 import { renameSchema } from './renameSchema'
 import { z } from 'zod'
+import { useAppDispatch } from '@/shared/hooks'
+import { addAlert } from '@/entities'
 
 type Inputs = z.infer<typeof renameSchema>
 
@@ -12,6 +14,8 @@ type Props = {
 }
 
 export const ChatRenameInput = ({ name, onSubmit }: Props) => {
+  const dispatch = useAppDispatch()
+
   const {
     register,
     handleSubmit,
@@ -28,7 +32,7 @@ export const ChatRenameInput = ({ name, onSubmit }: Props) => {
   }
 
   if (errors.newName) {
-    alert(errors.newName.message)
+    dispatch(addAlert({ message: errors.newName.message as string, type: 'error' }))
   }
 
   return (
