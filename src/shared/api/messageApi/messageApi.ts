@@ -7,7 +7,7 @@ import {
   SendMessageResponse,
 } from './types'
 
-export const messagesApi = baseApi.injectEndpoints({
+export const messageApi = baseApi.injectEndpoints({
   endpoints: builder => ({
     fetchMessages: builder.query<FetchMessagesResponse, FetchMessagesData>({
       query: ({ chatId, page }) => ({
@@ -65,4 +65,4 @@ export const messagesApi = baseApi.injectEndpoints({
 })
 
 export const { useLazyFetchMessagesQuery, useSendMessageMutation, useGetChatStreamQuery } =
-  messagesApi
+  messageApi

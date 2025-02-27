@@ -1,3 +1,3 @@
 export * from './baseApi'
-export * from './chatsApi'
-export * from './messagesApi'
+export * from './chatApi'
+export * from './messageApi'

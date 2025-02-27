@@ -1,7 +1,7 @@
 import { baseApi } from '@/shared'
 import { AddChatBody, FetchChatsQueryParams, FetchChatsResponse, PartialChat } from './types'
 
-export const chatsApi = baseApi.injectEndpoints({
+export const chatApi = baseApi.injectEndpoints({
   endpoints: builder => ({
     fetchChats: builder.query<FetchChatsResponse, FetchChatsQueryParams>({
       query: params => ({
@@ -28,4 +28,4 @@ export const chatsApi = baseApi.injectEndpoints({
   }),
 })
 
-export const { useFetchChatsQuery, useAddChatMutation, useDeleteChatMutation } = chatsApi
+export const { useFetchChatsQuery, useAddChatMutation, useDeleteChatMutation } = chatApi
