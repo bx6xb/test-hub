@@ -4,7 +4,7 @@ import { LangSwitcher } from './LangSwitcher'
 export const SidebarHeader = () => {
   return (
     <LogoAndLang>
-      <img src="/logo.png" alt="logo" width={104} height={30} />
+      <img src="/logo.svg" alt="logo" width={104} height={30} />
 
       <LangSwitcher />
     </LogoAndLang>
