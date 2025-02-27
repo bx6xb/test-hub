@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 import styled, { css, keyframes } from 'styled-components'
 import { Position, Props } from './types'
 
@@ -65,16 +65,6 @@ const fadeIn = keyframes`
     transform: translateY(0);
   }
 `
-const fadeOut = keyframes`
-  from {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  to {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-`
 const DropdownContainer = styled.div`
   position: relative;
 `
@@ -86,7 +76,11 @@ const DropdownWrapper = styled.div<Position & { $isOpen: boolean }>`
   left: ${({ left }) => left || 'auto'};
   z-index: 1;
 
-  animation: ${({ $isOpen }) => ($isOpen ? fadeIn : fadeOut)} 0.3s ease-in-out;
+  ${({ $isOpen }) =>
+    $isOpen &&
+    css`
+      animation: ${fadeIn} 0.3s ease-in-out;
+    `}
   pointer-events: ${({ $isOpen }) => ($isOpen ? 'auto' : 'none')};
 `
 const DropdownModal = styled.div`
