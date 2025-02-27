@@ -1,11 +1,21 @@
 import styled from 'styled-components'
 import { Chat } from './Chat'
-import { useFetchChatsQuery } from '@/shared'
+import { useAppSelector, useFetchChatsQuery } from '@/shared'
 
 export const Chats = () => {
+  const searchTerm = useAppSelector(state => state.appSlice.searchTerm)
+
   const { data } = useFetchChatsQuery({})
 
-  return <ChatsContainer>{data?.data.map(chat => <Chat key={chat.id} {...chat} />)}</ChatsContainer>
+  const filteredChats = data?.data.filter(chat => new RegExp(searchTerm, 'i').test(chat.name)) || []
+
+  return (
+    <ChatsContainer>
+      {filteredChats.map(chat => (
+        <Chat key={chat.id} {...chat} />
+      ))}
+    </ChatsContainer>
+  )
 }
 
 const ChatsContainer = styled.div`
