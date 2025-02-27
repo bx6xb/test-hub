@@ -34,5 +34,6 @@ const ContentContainer = styled.div`
 const SelectAndInput = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
   gap: 14px;
 `

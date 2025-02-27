@@ -1,10 +1,10 @@
+import { useAddChatMutation } from '@/shared'
 import styled from 'styled-components'
-import { useAddChatMutation } from '../api'
 
 export const ChatButtons = () => {
   const [addChat] = useAddChatMutation()
 
-  const addChatHandler = () => addChat({ name: 'eznow' })
+  const addChatHandler = () => addChat({ name: 'New chat' })
 
   return (
     <ChatButtonsContainer>

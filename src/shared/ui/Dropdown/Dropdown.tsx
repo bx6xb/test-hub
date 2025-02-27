@@ -11,7 +11,7 @@ export const Dropdown = ({
   ...position
 }: Props) => {
   const [isOpen, setIsOpen] = useState(false)
-  const dropdownModalRef = useRef<HTMLDivElement | null>(null)
+  const dropdownModalRef = useRef<HTMLDivElement>(null)
 
   const toggleIsOpenHandler = () => {
     getModalState && getModalState(!isOpen)

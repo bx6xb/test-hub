@@ -1,10 +1,7 @@
 import styled from 'styled-components'
-import { ChatType, useDeleteChatMutation } from '../../api'
-import { useGetChatId } from '@/shared'
+import { useDeleteChatMutation, useGetChatId, ChatType } from '@/shared'
 
-type Props = ChatType
-
-export const Chat = ({ name, id }: Props) => {
+export const Chat = ({ name, id }: ChatType) => {
   const { chatId, setChatId } = useGetChatId()
 
   const [deleteChat] = useDeleteChatMutation()

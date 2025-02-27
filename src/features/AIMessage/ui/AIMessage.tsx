@@ -1,4 +1,5 @@
 import { CopyText } from '@/shared'
+import { marked } from 'marked'
 import styled from 'styled-components'
 
 type Props = {
@@ -19,7 +20,7 @@ export const AIMessage = ({ messageText, time }: Props) => {
 
       <Message>
         <img src="/ChatGPT.svg" alt="chat gpt" width={40} height={40} />
-        <MessageText>{messageText}</MessageText>
+        <MessageText dangerouslySetInnerHTML={{ __html: marked(messageText) }} />
       </Message>
 
       <CopyAndTime>

@@ -1,10 +1,9 @@
 import styled from 'styled-components'
-import { useSendMessageMutation } from '../api'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { inputSchema } from '../model'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { useGetChatId } from '@/shared'
+import { useGetChatId, useSendMessageMutation } from '@/shared'
 
 type Inputs = z.infer<typeof inputSchema>
 
@@ -13,24 +12,33 @@ export const ChatInput = () => {
 
   const [sendMessage] = useSendMessageMutation()
 
-  const { register, handleSubmit } = useForm<Inputs>({
+  const { register, handleSubmit, reset } = useForm<Inputs>({
     resolver: zodResolver(inputSchema),
     defaultValues: {
       message: '',
     },
   })
 
-  const onFormSubmit: SubmitHandler<Inputs> = ({ message }) => {
-    sendMessage({
+  const onFormSubmit: SubmitHandler<Inputs> = async ({ message }) => {
+    reset()
+
+    await sendMessage({
       message,
       chatId,
     })
   }
 
+  const isFormDisabled = !chatId
+
   return (
     <ChatInputContainer onSubmit={handleSubmit(onFormSubmit)}>
-      <Input type="text" placeholder="Спроси о чем-нибудь..." {...register('message')} />
-      <SendMessage type="submit">
+      <Input
+        type="text"
+        placeholder="Спроси о чем-нибудь..."
+        disabled={isFormDisabled}
+        {...register('message')}
+      />
+      <SendMessage type="submit" disabled={isFormDisabled}>
         <img src="/send.svg" alt="send message" />
       </SendMessage>
     </ChatInputContainer>

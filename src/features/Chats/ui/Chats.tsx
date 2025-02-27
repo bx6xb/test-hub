@@ -1,6 +1,6 @@
 import styled from 'styled-components'
-import { useFetchChatsQuery } from '../api'
 import { Chat } from './Chat'
+import { useFetchChatsQuery } from '@/shared'
 
 export const Chats = () => {
   const { data } = useFetchChatsQuery({})

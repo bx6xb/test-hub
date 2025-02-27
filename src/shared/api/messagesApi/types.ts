@@ -1,31 +1,38 @@
-export type UserMessage = {
+import { Nullable } from '@/shared/types'
+
+// general type
+export type GeneralMessageResponse = {
   id: string
-  role: 'user'
+  role: 'user' | 'assistant'
+  status: string
+  tokens: number
+  action_type: Nullable<string>
+  user_id: string
+  chat_id: string
+  additional_content: Nullable<string>
+  disabled: boolean
+  content: Nullable<string>
+  request_id: Nullable<string>
+  transaction_id: Nullable<string>
+  model_id: Nullable<string>
+  created_at: string
+}
+
+// message types
+export type UserMessage = {
   choiced: boolean
   version: number
   set_id: null
   previous_version_id: null
   next_version_id: null
   video_id: null
-  action_type: null
-  status: string
-  model_id: null
   model_version: null
-  content: string
   full_content: string
   reasoning_content: null
   reasoning_time_ms: null
   search_status: null
   search_results: null
   isEncrypted: boolean
-  additional_content: null
-  chat_id: string
-  user_id: string
-  tokens: number
-  disabled: boolean
-  created_at: string
-  transaction_id: null
-  request_id: null
   voice_id: null
   job_id: null
   mj_mode: null
@@ -40,36 +47,21 @@ export type UserMessage = {
   voice: null
   video: null
   job: null
-}
-
+} & GeneralMessageResponse
 export type AssistantMessage = {
-  id: string
-  role: 'assistant'
   choiced: boolean
   version: number
   set_id: null
   previous_version_id: null
   next_version_id: null
   video_id: null
-  action_type: null
-  status: string
-  model_id: string
   model_version: null
-  content: string
   full_content: null
   reasoning_content: string
   reasoning_time_ms: null
   search_status: null
   search_results: null
   isEncrypted: boolean
-  additional_content: null
-  chat_id: string
-  user_id: string
-  tokens: number
-  disabled: boolean
-  created_at: string
-  transaction_id: string
-  request_id: null
   voice_id: null
   job_id: string
   mj_mode: null
@@ -170,14 +162,30 @@ export type AssistantMessage = {
     mj_remaining_timeout: null
     created_at: string
   }
-}
+} & GeneralMessageResponse
 
+// fetch messages
 export type FetchMessagesResponse = {
   data: (UserMessage | AssistantMessage)[]
   pages: number
 }
-
 export type FetchMessagesData = {
   chatId: string
   page?: number
+}
+
+// get chat stream
+export type GetChatStreamParams = {
+  chatId: string
+}
+
+// send message
+export type SendMessageResponse = {
+  type: string
+  tg_bot_message_id: string
+} & GeneralMessageResponse
+export type SendMessageBody = {
+  chatId: string
+  message: string
+  tgBotMessageId?: string
 }

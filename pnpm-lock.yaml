@@ -20,6 +20,9 @@ importers:
       '@types/node':
         specifier: ^22.13.5
         version: 22.13.5
+      marked:
+        specifier: ^15.0.7
+        version: 15.0.7
       react:
         specifier: ^19.0.0
         version: 19.0.0
@@ -493,6 +496,11 @@ packages:
 
   immer@10.1.1:
     resolution: {integrity: sha512-s2MPrmjovJcoMaHtx6K11Ra7oD05NT97w1IC5zpMkT6Atjr7H8LjaDd81iIxUYpMKSRRNMJE703M1Fhr/TctHw==}
+
+  marked@15.0.7:
+    resolution: {integrity: sha512-dgLIeKGLx5FwziAnsk4ONoGwHwGPJzselimvlVskE9XLN4Orv9u2VA3GWw/lYUqjfA0rUT/6fqKwfZJapP9BEg==}
+    engines: {node: '>= 18'}
+    hasBin: true
 
   nanoid@3.3.8:
     resolution: {integrity: sha512-WNLf5Sd8oZxOm+TzppcYk8gVOgP+l58xNy58D0nbUnOxOWRWvlcCV4kUF7ltmI6PsrLl/BgKEyS4mqsGChFN0w==}
@@ -973,6 +981,8 @@ snapshots:
       react-is: 16.13.1
 
   immer@10.1.1: {}
+
+  marked@15.0.7: {}
 
   nanoid@3.3.8: {}
 
