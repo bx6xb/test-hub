@@ -1,3 +1,5 @@
+import styled from 'styled-components'
+
 type Props = {
   text: string
 }
@@ -12,5 +14,9 @@ export const CopyText = ({ text }: Props) => {
     }
   }
 
-  return <img src="/copy.svg" alt="copy text" onClick={copyTextHandler} />
+  return <Image src="/copy.svg" alt="copy text" onClick={copyTextHandler} />
 }
+
+const Image = styled.img`
+  cursor: pointer;
+`

@@ -13,7 +13,7 @@ export const Dropdown = ({
   const [isOpen, setIsOpen] = useState(false)
   const dropdownModalRef = useRef<HTMLDivElement | null>(null)
 
-  const setIsOpenHandler = () => {
+  const toggleIsOpenHandler = () => {
     getModalState && getModalState(!isOpen)
     setIsOpen(!isOpen)
   }
@@ -26,11 +26,11 @@ export const Dropdown = ({
 
   return (
     <DropdownContainer>
-      <div onClick={setIsOpenHandler}>{children}</div>
+      <div onClick={toggleIsOpenHandler}>{children}</div>
 
       <DropdownWrapper $isOpen={isOpen} {...position}>
         {isOpen && (
-          <DropdownModal ref={dropdownModalRef} onBlur={setIsOpenHandler} tabIndex={-1}>
+          <DropdownModal ref={dropdownModalRef} onBlur={toggleIsOpenHandler} tabIndex={-1}>
             {options.map(({ id, label }) => (
               <DropdownOption
                 key={id}

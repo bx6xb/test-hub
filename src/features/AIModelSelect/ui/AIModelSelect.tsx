@@ -47,6 +47,7 @@ const Select = styled.div`
   border: 1px solid #313e62;
   border-radius: 10px;
   cursor: pointer;
+  user-select: none;
 `
 const Model = styled.div`
   display: flex;

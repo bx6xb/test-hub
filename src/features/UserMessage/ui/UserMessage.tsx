@@ -12,8 +12,8 @@ export const UserMessage = ({ messageText, time }: Props) => {
       <CopyText text={messageText} />
 
       <Message>
-        {messageText}
         <Time>{time}</Time>
+        <MessageText>{messageText}</MessageText>
       </Message>
 
       <img src="/user.svg" alt="user avatar" />
@@ -22,15 +22,11 @@ export const UserMessage = ({ messageText, time }: Props) => {
 }
 
 const UserMessageContainer = styled.div`
-  max-width: 50%;
+  max-width: 65%;
   display: flex;
   gap: 10px;
   align-items: flex-end;
   align-self: flex-end;
-
-  :first-child {
-    cursor: pointer;
-  }
 `
 const Message = styled.div`
   display: flex;
@@ -40,9 +36,16 @@ const Message = styled.div`
   border-bottom-right-radius: 0;
   background-color: rgba(from #4785ff r g b / 50%);
   padding: 14px 53px 14px 16px;
-  font-size: 18px;
   font-weight: 400;
   position: relative;
+
+  ::selection {
+    color: #4785ff;
+    background-color: #fff;
+  }
+`
+const MessageText = styled.p`
+  font-size: 18px;
 `
 const Time = styled.span`
   font-size: 12px;

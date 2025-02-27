@@ -32,7 +32,7 @@ export const AIMessage = () => {
 }
 
 const AIMessageContainer = styled.div`
-  max-width: 50%;
+  max-width: 65%;
   display: flex;
   flex-direction: column;
   gap: 8px;
