@@ -1,5 +1,6 @@
 import { AIModelSelect, ChatInput, Messages } from '@/features'
 import { useGetChatId } from '@/shared'
+import { useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import styled from 'styled-components'
 
@@ -7,6 +8,10 @@ export const ChatWindow = () => {
   const { chatId } = useGetChatId()
 
   const { t } = useTranslation()
+
+  useEffect(() => {
+    document.title = 'Chat'
+  }, [chatId])
 
   return (
     <ChatWindowContainer>

@@ -6,6 +6,7 @@ import { useAppDispatch } from '@/shared'
 import { login } from '@/entities'
 import { userDataSchema } from '@/shared/validation'
 import { useTranslation } from 'react-i18next'
+import { useEffect } from 'react'
 
 type Inputs = z.infer<typeof userDataSchema>
 
@@ -21,6 +22,10 @@ export const LoginPage = () => {
   } = useForm<Inputs>({
     resolver: zodResolver(userDataSchema),
   })
+
+  useEffect(() => {
+    document.title = 'Login'
+  }, [])
 
   const onSubmitHandler: SubmitHandler<Inputs> = data => {
     dispatch(login(data))
