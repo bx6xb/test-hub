@@ -10,7 +10,7 @@ export const reset = css`
   }
 
   a {
-    text-decoration: none;
+    color: var(--primary-color);
   }
 
   button {
