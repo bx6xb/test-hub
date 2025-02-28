@@ -12,7 +12,13 @@ export const ChatPreview = ({ chatName, id, toggleEditMode }: Props) => {
 
   const { chatId, setChatId } = useGetChatId()
 
-  const deleteChatHandler = () => deleteChat(id)
+  const deleteChatHandler = () => {
+    deleteChat(id)
+
+    if (chatId === id) {
+      setChatId('')
+    }
+  }
 
   const setSelectedChatIdHandler = () => setChatId(id)
 
