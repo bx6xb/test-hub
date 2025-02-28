@@ -1,10 +1,10 @@
 export const LANGS = [
   {
-    id: 'RU',
+    id: 'ru',
     label: 'RU',
   },
   {
-    id: 'EN',
+    id: 'en',
     label: 'EN',
   },
 ]

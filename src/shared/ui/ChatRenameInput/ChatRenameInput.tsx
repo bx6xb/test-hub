@@ -1,12 +1,13 @@
 import { zodResolver } from '@hookform/resolvers/zod'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import styled from 'styled-components'
-import { renameSchema } from './renameSchema'
 import { z } from 'zod'
-import { useAppDispatch } from '@/shared/hooks'
+import { useAppDispatch, inputSchema } from '@/shared'
 import { addAlert } from '@/entities'
+import { useEffect } from 'react'
+import { useTranslation } from 'react-i18next'
 
-type Inputs = z.infer<typeof renameSchema>
+type Inputs = z.infer<typeof inputSchema>
 
 type Props = {
   name: string
@@ -16,30 +17,34 @@ type Props = {
 export const ChatRenameInput = ({ name, onSubmit }: Props) => {
   const dispatch = useAppDispatch()
 
+  const { t } = useTranslation()
+
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<Inputs>({
-    resolver: zodResolver(renameSchema),
+    resolver: zodResolver(inputSchema),
     defaultValues: {
-      newName: name,
+      string: name,
     },
   })
 
-  const onSubmitHandler: SubmitHandler<Inputs> = ({ newName }) => {
-    onSubmit(newName)
-  }
+  useEffect(() => {
+    if (errors.string) {
+      dispatch(addAlert({ message: t('ChatRenameInput_min_length_error'), type: 'error' }))
+    }
+  }, [errors.string])
 
-  if (errors.newName) {
-    dispatch(addAlert({ message: errors.newName.message as string, type: 'error' }))
+  const onSubmitHandler: SubmitHandler<Inputs> = ({ string }) => {
+    onSubmit(string)
   }
 
   return (
     <Form onSubmit={handleSubmit(onSubmitHandler)}>
       <img src="/images/chat.svg" alt="chat icon" />
 
-      <Input defaultValue={name} {...register('newName')} />
+      <Input defaultValue={name} {...register('string')} />
 
       <button type="submit">
         <img src="/images/edit.svg" alt="edit chat name" width={18} height={18} />

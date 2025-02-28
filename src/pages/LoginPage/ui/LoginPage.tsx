@@ -5,11 +5,14 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { useAppDispatch } from '@/shared'
 import { login } from '@/entities'
 import { userDataSchema } from '@/shared/validation'
+import { useTranslation } from 'react-i18next'
 
 type Inputs = z.infer<typeof userDataSchema>
 
 export const LoginPage = () => {
   const dispatch = useAppDispatch()
+
+  const { t } = useTranslation()
 
   const {
     register,
@@ -23,26 +26,27 @@ export const LoginPage = () => {
     dispatch(login(data))
   }
 
-  const emailError = errors.email?.message
-  const passwordError = errors.password?.message
-
   return (
     <Form onSubmit={handleSubmit(onSubmitHandler)}>
-      <FormHeader>Авторизация</FormHeader>
+      <FormHeader>{t('LoginPage_login')}</FormHeader>
 
       <Label>
         E-Mail
-        <Input type="email" placeholder="Ваш E-Mail" {...register('email')} />
+        <Input type="email" placeholder={t('LoginPage_email_placeholder')} {...register('email')} />
       </Label>
-      {!!emailError && <Error>{emailError}</Error>}
+      {!!errors.email && <Error>{t('LoginPage_incorrect_email_error')}</Error>}
 
       <Label>
-        Пароль
-        <Input type="password" placeholder="Ваш пароль" {...register('password')} />
+        {t('LoginPage_password')}
+        <Input
+          type="password"
+          placeholder={t('LoginPage_password_placeholder')}
+          {...register('password')}
+        />
       </Label>
-      {!!passwordError && <Error>{passwordError}</Error>}
+      {!!errors.password && <Error>{t('LoginPage_password_length_error')}</Error>}
 
-      <Button>Войти</Button>
+      <Button>{t('LoginPage_submit')}</Button>
     </Form>
   )
 }
@@ -87,7 +91,7 @@ const Input = styled.input`
 `
 const Error = styled.span`
   color: red;
-  font-size: 12px;
+  font-size: 14px;
 `
 const Button = styled.button`
   display: flex;

@@ -1,0 +1,27 @@
+{
+  "file": "LoginPage.tsx",
+  "LoginPage_login": "Авторизация",
+  "LoginPage_email_placeholder": "Ваш E-Mail",
+  "LoginPage_password": "Пароль",
+  "LoginPage_password_placeholder": "Ваш пароль",
+  "LoginPage_submit": "Войти",
+  "LoginPage_incorrect_email_error": "Некорректный email",
+  "LoginPage_password_length_error": "Пароль должен содержать от 6 до 32 символов.",
+
+  "file": "ChatWindow.tsx",
+  "ChatWindow_welcome_message": "Начните общение! 🚀 Создайте новый чат или выберите существующий, чтобы продолжить разговор.",
+
+  "file": "ChatInput.tsx",
+  "ChatInput_input_placeholder": "Спроси о чем-нибудь...",
+
+  "file": "CopyText.tsx",
+  "CopyText_text_successfully_copied": "Текст скопирован!",
+  "CopyText_copy_error": "Ошибка копирования!",
+
+  "file": "ChatRenameInput.tsx",
+  "ChatRenameInput_min_length_error": "Строка должна содержать хотя бы 1 символ",
+
+  "file": "rtkQueryErrorLogger.ts",
+  "rtkQueryErrorLogger_server_error": "Ошибка сервера",
+  "rtkQueryErrorLogger_network_error": "Ошибка сети"
+}

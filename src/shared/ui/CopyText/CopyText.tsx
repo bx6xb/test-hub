@@ -1,5 +1,6 @@
 import { addAlert } from '@/entities'
 import { useAppDispatch } from '@/shared/hooks'
+import { useTranslation } from 'react-i18next'
 import styled from 'styled-components'
 
 type Props = {
@@ -9,12 +10,14 @@ type Props = {
 export const CopyText = ({ text }: Props) => {
   const dispatch = useAppDispatch()
 
+  const { t } = useTranslation()
+
   const copyTextHandler = async () => {
     try {
       await navigator.clipboard.writeText(text)
-      dispatch(addAlert({ message: 'Текст скопирован!', type: 'success' }))
+      dispatch(addAlert({ message: t('CopyText_text_successfully_copied'), type: 'success' }))
     } catch (err) {
-      dispatch(addAlert({ message: 'Ошибка копирования!', type: 'error' }))
+      dispatch(addAlert({ message: t('CopyText_copy_error'), type: 'error' }))
     }
   }
 

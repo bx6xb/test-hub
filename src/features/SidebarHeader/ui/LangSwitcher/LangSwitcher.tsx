@@ -1,15 +1,21 @@
 import { Arrow, Dropdown } from '@/shared'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { LANGS } from '../../model'
+import { useTranslation } from 'react-i18next'
 
 export const LangSwitcher = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false)
+  const { i18n } = useTranslation()
 
-  const [selected, setSelected] = useState('RU')
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [selectedLang, setSelectedLang] = useState(i18n.language)
+
+  useEffect(() => {
+    i18n.changeLanguage(selectedLang)
+  }, [selectedLang])
 
   const onLangChangeHandler = (id: string) => {
-    setSelected(id)
+    setSelectedLang(id)
   }
 
   return (
@@ -18,11 +24,11 @@ export const LangSwitcher = () => {
       top="30px"
       getModalState={setIsModalOpen}
       onOptionChange={onLangChangeHandler}
-      selected={selected}
+      selected={selectedLang}
     >
       <LangSwitcherContainer>
         <img src="/images/lang.svg" alt="language" />
-        <CurrentLang>{selected}</CurrentLang>
+        <CurrentLang>{selectedLang.toUpperCase()}</CurrentLang>
         <Arrow isArrowUp={isModalOpen} />
       </LangSwitcherContainer>
     </Dropdown>

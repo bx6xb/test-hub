@@ -1,4 +1,4 @@
-import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
+import { Navigate, Route, Routes } from 'react-router-dom'
 import { checkIsAuth } from '@/entities'
 import { Preloader, ProtectedRoute, useAppDispatch, useAppSelector } from '@/shared'
 import { ChatPage, LoginPage } from '@/pages'
@@ -26,7 +26,7 @@ export const App = () => {
   }
 
   return (
-    <BrowserRouter>
+    <>
       <Routes>
         <Route element={<ProtectedRoute navigateTo={'/chat'} showPage={!isAuth} />}>
           <Route element={<LoginPage />} path={'/login'} />
@@ -42,6 +42,6 @@ export const App = () => {
       <Alert />
 
       <Preloader isHidden={!isAppLoading} />
-    </BrowserRouter>
+    </>
   )
 }

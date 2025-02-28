@@ -1,36 +1,38 @@
 import styled from 'styled-components'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { z } from 'zod'
-import { inputSchema } from '../model'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { useGetChatId, useSendMessageMutation } from '@/shared'
+import { inputSchema, useGetChatId, useSendMessageMutation } from '@/shared'
+import { useTranslation } from 'react-i18next'
 
 type Inputs = z.infer<typeof inputSchema>
 
 export const ChatInput = () => {
   const { chatId } = useGetChatId()
 
+  const { t } = useTranslation()
+
   const [sendMessage] = useSendMessageMutation()
 
   const { register, handleSubmit, reset } = useForm<Inputs>({
     resolver: zodResolver(inputSchema),
     defaultValues: {
-      message: '',
+      string: '',
     },
   })
 
-  const onFormSubmit: SubmitHandler<Inputs> = async ({ message }) => {
+  const onFormSubmit: SubmitHandler<Inputs> = async ({ string }) => {
     reset()
 
     await sendMessage({
-      message,
+      message: string,
       chatId,
     })
   }
 
   return (
     <ChatInputContainer onSubmit={handleSubmit(onFormSubmit)}>
-      <Input type="text" placeholder="Спроси о чем-нибудь..." {...register('message')} />
+      <Input type="text" placeholder={t('ChatInput_input_placeholder')} {...register('string')} />
       <SendMessage type="submit">
         <img src="/images/send.svg" alt="send message" />
       </SendMessage>

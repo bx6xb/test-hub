@@ -1,0 +1,27 @@
+{
+  "file": "LoginPage.tsx",
+  "LoginPage_login": "Login",
+  "LoginPage_email_placeholder": "Your E-Mail",
+  "LoginPage_password": "Password",
+  "LoginPage_password_placeholder": "Your password",
+  "LoginPage_submit": "Sign in",
+  "LoginPage_incorrect_email_error": "Invalid email",
+  "LoginPage_password_length_error": "The password must be between 6 and 32 characters long.",
+
+  "file": "ChatWindow.tsx",
+  "ChatWindow_welcome_message": "Start chatting! 🚀 Create a new chat or select an existing one to continue the conversation.",
+
+  "file": "ChatInput.tsx",
+  "ChatInput_input_placeholder": "Ask something...",
+
+  "file": "CopyText.tsx",
+  "CopyText_text_successfully_copied": "Text copied successfully!",
+  "CopyText_copy_error": "Copy error!",
+
+  "file": "ChatRenameInput.tsx",
+  "ChatRenameInput_min_length_error": "The string must contain at least 1 character",
+
+  "file": "rtkQueryErrorLogger.ts",
+  "rtkQueryErrorLogger_server_error": "Server error",
+  "rtkQueryErrorLogger_network_error": "Network error"
+}

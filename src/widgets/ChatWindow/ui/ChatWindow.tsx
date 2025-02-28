@@ -1,9 +1,12 @@
 import { AIModelSelect, ChatInput, Messages } from '@/features'
 import { useGetChatId } from '@/shared'
+import { useTranslation } from 'react-i18next'
 import styled from 'styled-components'
 
 export const ChatWindow = () => {
   const { chatId } = useGetChatId()
+
+  const { t } = useTranslation()
 
   return (
     <ChatWindowContainer>
@@ -19,10 +22,7 @@ export const ChatWindow = () => {
           </>
         ) : (
           <ChatWelcomeMessage>
-            <h3>
-              Начните общение! 🚀 Создайте новый чат или выберите существующий, чтобы продолжить
-              разговор.
-            </h3>
+            <WelcomeMessage>{t('ChatWindow_welcome_message')}</WelcomeMessage>
           </ChatWelcomeMessage>
         )}
       </ContentContainer>
@@ -57,4 +57,7 @@ const ChatWelcomeMessage = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+`
+const WelcomeMessage = styled.h3`
+  text-align: center;
 `
