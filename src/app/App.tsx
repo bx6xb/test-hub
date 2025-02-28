@@ -1,12 +1,23 @@
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 import { checkIsAuth } from '@/entities'
-import { ProtectedRoute, useAppDispatch, useAppSelector } from '@/shared'
+import { Preloader, ProtectedRoute, useAppDispatch, useAppSelector } from '@/shared'
 import { ChatPage, LoginPage } from '@/pages'
 import { Alert } from '@/features'
+import { useEffect, useState } from 'react'
 
 export const App = () => {
   const isAuth = useAppSelector(state => state.authSlice.isAuth)
   const dispatch = useAppDispatch()
+
+  const [isAppLoading, setIsAppLoading] = useState(true)
+
+  useEffect(() => {
+    const id = setTimeout(() => {
+      setIsAppLoading(!isAppLoading)
+    }, 1000)
+
+    return () => clearTimeout(id)
+  }, [])
 
   if (isAuth === null) {
     dispatch(checkIsAuth())
@@ -29,6 +40,8 @@ export const App = () => {
       </Routes>
 
       <Alert />
+
+      <Preloader isHidden={!isAppLoading} />
     </BrowserRouter>
   )
 }
