@@ -1,16 +1,30 @@
 import { AIModelSelect, ChatInput, Messages } from '@/features'
+import { useGetChatId } from '@/shared'
 import styled from 'styled-components'
 
 export const ChatWindow = () => {
+  const { chatId } = useGetChatId()
+
   return (
     <ChatWindowContainer>
       <ContentContainer>
-        <Messages />
+        {chatId ? (
+          <>
+            <Messages />
 
-        <SelectAndInput>
-          <AIModelSelect />
-          <ChatInput />
-        </SelectAndInput>
+            <SelectAndInput>
+              <AIModelSelect />
+              <ChatInput />
+            </SelectAndInput>
+          </>
+        ) : (
+          <ChatWelcomeMessage>
+            <h3>
+              Начните общение! 🚀 Создайте новый чат или выберите существующий, чтобы продолжить
+              разговор.
+            </h3>
+          </ChatWelcomeMessage>
+        )}
       </ContentContainer>
     </ChatWindowContainer>
   )
@@ -36,4 +50,11 @@ const SelectAndInput = styled.div`
   flex-direction: column;
   align-items: flex-start;
   gap: 14px;
+`
+const ChatWelcomeMessage = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `

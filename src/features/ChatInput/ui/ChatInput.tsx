@@ -28,17 +28,10 @@ export const ChatInput = () => {
     })
   }
 
-  const isFormDisabled = !chatId
-
   return (
     <ChatInputContainer onSubmit={handleSubmit(onFormSubmit)}>
-      <Input
-        type="text"
-        placeholder="Спроси о чем-нибудь..."
-        disabled={isFormDisabled}
-        {...register('message')}
-      />
-      <SendMessage type="submit" disabled={isFormDisabled}>
+      <Input type="text" placeholder="Спроси о чем-нибудь..." {...register('message')} />
+      <SendMessage type="submit">
         <img src="/send.svg" alt="send message" />
       </SendMessage>
     </ChatInputContainer>
