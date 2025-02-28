@@ -1,19 +1,17 @@
 import styled from 'styled-components'
 import { Chat } from './Chat'
-import { useAppSelector, useFetchChatsQuery } from '@/shared'
+import { Loader, useAppSelector, useFetchChatsQuery } from '@/shared'
 
 export const Chats = () => {
   const searchTerm = useAppSelector(state => state.appSlice.searchTerm)
 
-  const { data } = useFetchChatsQuery({})
+  const { data, isLoading } = useFetchChatsQuery({})
 
   const filteredChats = data?.data.filter(chat => new RegExp(searchTerm, 'i').test(chat.name)) || []
 
   return (
     <ChatsContainer>
-      {filteredChats.map(chat => (
-        <Chat key={chat.id} {...chat} />
-      ))}
+      {isLoading ? <Loader /> : filteredChats.map(chat => <Chat key={chat.id} {...chat} />)}
     </ChatsContainer>
   )
 }

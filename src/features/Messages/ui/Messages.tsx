@@ -2,6 +2,7 @@ import { AIMessage, UserMessage } from '@/features'
 import styled from 'styled-components'
 import {
   getTimeFromIsoDate,
+  Loader,
   useGetChatId,
   // useGetChatStreamQuery,
   useLazyFetchMessagesQuery,
@@ -11,7 +12,7 @@ import { useEffect, useRef } from 'react'
 export const Messages = () => {
   const { chatId } = useGetChatId()
 
-  const [fetchMessages, { data: messages }] = useLazyFetchMessagesQuery()
+  const [fetchMessages, { data: messages, isLoading }] = useLazyFetchMessagesQuery()
   // const { data: streamMessages = [] } = useGetChatStreamQuery({ chatId }, { pollingInterval: 0 })
 
   const messagesEndRef = useRef<HTMLDivElement>(null)
@@ -32,14 +33,26 @@ export const Messages = () => {
 
   return (
     <MessagesContainer>
-      {messages &&
+      {isLoading ? (
+        <Loader loaderSize={25} />
+      ) : (
+        messages &&
         [...messages.data].reverse().map(({ role, content, created_at, id }) => {
           const Component = role === 'assistant' ? AIMessage : UserMessage
 
           return (
             <Component key={id} messageText={content || ''} time={getTimeFromIsoDate(created_at)} />
           )
-        })}
+        })
+      )}
+      {/* {messages &&
+        [...messages.data].reverse().map(({ role, content, created_at, id }) => {
+          const Component = role === 'assistant' ? AIMessage : UserMessage
+
+          return (
+            <Component key={id} messageText={content || ''} time={getTimeFromIsoDate(created_at)} />
+          )
+        })} */}
       <div ref={messagesEndRef} />
     </MessagesContainer>
   )
