@@ -37,12 +37,12 @@ export const ChatRenameInput = ({ name, onSubmit }: Props) => {
 
   return (
     <Form onSubmit={handleSubmit(onSubmitHandler)}>
-      <img src="/chat.svg" alt="chat icon" />
+      <img src="/images/chat.svg" alt="chat icon" />
 
       <Input defaultValue={name} {...register('newName')} />
 
       <button type="submit">
-        <img src="/edit.svg" alt="edit chat name" width={18} height={18} />
+        <img src="/images/edit.svg" alt="edit chat name" width={18} height={18} />
       </button>
     </Form>
   )

@@ -5,7 +5,7 @@ type Props = {
 }
 
 export const Arrow = ({ isArrowUp }: Props) => {
-  return <ArrowContainer src="/arrow-up.svg" alt="arrow" $isArrowUp={isArrowUp} />
+  return <ArrowContainer src="/images/arrow-up.svg" alt="arrow" $isArrowUp={isArrowUp} />
 }
 
 const ArrowContainer = styled.img<{ $isArrowUp: boolean }>`

@@ -21,7 +21,7 @@ export const LangSwitcher = () => {
       selected={selected}
     >
       <LangSwitcherContainer>
-        <img src="/lang.svg" alt="language" />
+        <img src="/images/lang.svg" alt="language" />
         <CurrentLang>{selected}</CurrentLang>
         <Arrow isArrowUp={isModalOpen} />
       </LangSwitcherContainer>

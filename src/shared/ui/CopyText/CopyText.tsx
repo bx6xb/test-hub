@@ -18,7 +18,7 @@ export const CopyText = ({ text }: Props) => {
     }
   }
 
-  return <Image src="/copy.svg" alt="copy text" onClick={copyTextHandler} />
+  return <Image src="/images/copy.svg" alt="copy text" onClick={copyTextHandler} />
 }
 
 const Image = styled.img`

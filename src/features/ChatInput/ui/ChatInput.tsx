@@ -32,7 +32,7 @@ export const ChatInput = () => {
     <ChatInputContainer onSubmit={handleSubmit(onFormSubmit)}>
       <Input type="text" placeholder="Спроси о чем-нибудь..." {...register('message')} />
       <SendMessage type="submit">
-        <img src="/send.svg" alt="send message" />
+        <img src="/images/send.svg" alt="send message" />
       </SendMessage>
     </ChatInputContainer>
   )

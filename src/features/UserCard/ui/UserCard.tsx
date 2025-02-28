@@ -12,7 +12,7 @@ export const UserCard = () => {
   return (
     <UserCardContainer>
       <UserInfo>
-        <img src="/user-with-border.svg" alt="user avatar" />
+        <img src="/images/user-with-border.svg" alt="user avatar" />
 
         <NameAndWallet>
           <Name>{username}</Name>
@@ -20,7 +20,7 @@ export const UserCard = () => {
         </NameAndWallet>
       </UserInfo>
 
-      <img src="/logout.svg" alt="logout" onClick={logoutHandler} width={16} height={16} />
+      <img src="/images/logout.svg" alt="logout" onClick={logoutHandler} width={16} height={16} />
     </UserCardContainer>
   )
 }

@@ -13,7 +13,7 @@ export const AIModelSelect = () => {
     id: model,
     label: (
       <Model key={model}>
-        <img src={`/${model}.svg`} alt={model} />
+        <img src={`/images/${model}.svg`} alt={model} />
         {model}
       </Model>
     ),
@@ -28,7 +28,7 @@ export const AIModelSelect = () => {
       getModalState={setIsModalOpen}
     >
       <Select>
-        <img src={`/${selected}.svg`} alt={selected} />
+        <img src={`/images/${selected}.svg`} alt={selected} />
         {selected}
         <Arrow isArrowUp={isModalOpen} />
       </Select>

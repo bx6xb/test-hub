@@ -23,7 +23,7 @@ export const ChatButtons = () => {
   return (
     <ChatButtonsContainer>
       <AddChat onClick={addChatHandler}>
-        <img src="/add-chat.svg" alt="add chat" />
+        <img src="/images/add-chat.svg" alt="add chat" />
       </AddChat>
 
       <Search />

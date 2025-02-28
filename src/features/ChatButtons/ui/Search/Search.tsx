@@ -27,7 +27,11 @@ export const Search = () => {
   return (
     <SearchContainer $isSearching={isSearching}>
       <SearchButton onClick={toggleSearching}>
-        {isSearching ? 'X' : <img src="/search.svg" alt="search chat" width={18} height={18} />}
+        {isSearching ? (
+          'X'
+        ) : (
+          <img src="/images/search.svg" alt="search chat" width={18} height={18} />
+        )}
       </SearchButton>
 
       <Input

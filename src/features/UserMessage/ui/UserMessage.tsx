@@ -16,7 +16,7 @@ export const UserMessage = ({ messageText, time }: Props) => {
         <MessageText>{messageText}</MessageText>
       </Message>
 
-      <img src="/user.svg" alt="user avatar" />
+      <img src="/images/user.svg" alt="user avatar" />
     </UserMessageContainer>
   )
 }

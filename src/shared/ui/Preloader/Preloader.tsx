@@ -7,7 +7,7 @@ type Props = {
 export const Preloader = ({ isHidden }: Props) => {
   return (
     <PreloaderContainer $isHidden={isHidden}>
-      <Image src="/ChatGPT.svg" alt="preloader" />
+      <Image src="/images/ChatGPT.svg" alt="preloader" />
     </PreloaderContainer>
   )
 }

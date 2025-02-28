@@ -23,7 +23,7 @@ export const AlertMessage = ({ id, message, type }: AlertType) => {
   return (
     <AlertMessageContainer $isError={type === 'error'} $isVisible={isVisible}>
       <img
-        src={type === 'error' ? '/cross.svg' : '/tick.svg'}
+        src={`/images${type === 'error' ? '/cross.svg' : '/tick.svg'}`}
         alt={type === 'error' ? 'cross' : 'tick'}
         width={26}
         height={26}

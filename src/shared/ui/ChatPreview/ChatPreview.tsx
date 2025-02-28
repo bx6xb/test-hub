@@ -24,13 +24,19 @@ export const ChatPreview = ({ chatName, id, toggleEditMode }: Props) => {
 
   return (
     <ChatContainer $isSelected={chatId === id}>
-      <img src="/chat.svg" alt="chat icon" />
+      <img src="/images/chat.svg" alt="chat icon" />
 
       <ChatName onClick={setSelectedChatIdHandler}>{chatName}</ChatName>
 
-      <img src="/edit.svg" alt="edit chat name" width={18} height={18} onClick={toggleEditMode} />
+      <img
+        src="/images/edit.svg"
+        alt="edit chat name"
+        width={18}
+        height={18}
+        onClick={toggleEditMode}
+      />
 
-      <img src="/trash.svg" alt="delete chat" onClick={deleteChatHandler} />
+      <img src="/images/trash.svg" alt="delete chat" onClick={deleteChatHandler} />
     </ChatContainer>
   )
 }
