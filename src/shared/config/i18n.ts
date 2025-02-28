@@ -10,7 +10,7 @@ i18nModule
   .use(initReactI18next)
   .init({
     backend: {
-      loadPath: '/public/locales/{{lng}}/{{ns}}.json',
+      loadPath: '/locales/{{lng}}/{{ns}}.json',
     },
     fallbackLng: 'ru',
     interpolation: {
