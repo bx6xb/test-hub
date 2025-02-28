@@ -1,11 +1,24 @@
-import { useAddChatMutation } from '@/shared'
+import { useAddChatMutation, useGetChatId } from '@/shared'
 import styled from 'styled-components'
 import { Search } from './Search'
 
 export const ChatButtons = () => {
   const [addChat] = useAddChatMutation()
+  const { setChatId } = useGetChatId()
 
-  const addChatHandler = () => addChat({ name: 'New chat' })
+  const addChatHandler = async () => {
+    try {
+      const { data } = await addChat({ name: 'New chat' })
+
+      if (data) {
+        const { id } = data
+
+        setChatId(id)
+      }
+    } catch (e) {
+      console.error(e)
+    }
+  }
 
   return (
     <ChatButtonsContainer>
