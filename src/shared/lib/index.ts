@@ -1,1 +1,1 @@
-export * from './getTimeFromIsoDate'
+export * from './getTimeFromIsoDate';

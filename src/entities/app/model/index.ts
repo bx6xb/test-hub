@@ -1,2 +1,2 @@
-export * from './appSlice'
-export * from './types'
+export * from './appSlice';
+export * from './types';

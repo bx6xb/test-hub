@@ -1,19 +1,19 @@
-import { SubmitHandler, useForm } from 'react-hook-form'
-import styled from 'styled-components'
-import { z } from 'zod'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { useAppDispatch } from '@/shared'
-import { login } from '@/entities'
-import { userDataSchema } from '@/shared/validation'
-import { useTranslation } from 'react-i18next'
-import { useEffect } from 'react'
+import { SubmitHandler, useForm } from 'react-hook-form';
+import styled from 'styled-components';
+import { z } from 'zod';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useAppDispatch } from '@/shared';
+import { login } from '@/entities';
+import { userDataSchema } from '@/shared/validation';
+import { useTranslation } from 'react-i18next';
+import { useEffect } from 'react';
 
-type Inputs = z.infer<typeof userDataSchema>
+type Inputs = z.infer<typeof userDataSchema>;
 
 export const LoginPage = () => {
-  const dispatch = useAppDispatch()
+  const dispatch = useAppDispatch();
 
-  const { t } = useTranslation()
+  const { t } = useTranslation();
 
   const {
     register,
@@ -21,15 +21,15 @@ export const LoginPage = () => {
     formState: { errors },
   } = useForm<Inputs>({
     resolver: zodResolver(userDataSchema),
-  })
+  });
 
   useEffect(() => {
-    document.title = 'Login'
-  }, [])
+    document.title = 'Login';
+  }, []);
 
   const onSubmitHandler: SubmitHandler<Inputs> = data => {
-    dispatch(login(data))
-  }
+    dispatch(login(data));
+  };
 
   return (
     <Form onSubmit={handleSubmit(onSubmitHandler)}>
@@ -53,8 +53,8 @@ export const LoginPage = () => {
 
       <Button>{t('LoginPage_submit')}</Button>
     </Form>
-  )
-}
+  );
+};
 
 const Form = styled.form`
   width: 459px;
@@ -69,12 +69,12 @@ const Form = styled.form`
   left: 50%;
   transform: translate(-50%, -50%);
   padding: 20px;
-`
+`;
 const FormHeader = styled.h2`
   font-size: 22px;
   font-weight: 600;
   margin-bottom: 4px;
-`
+`;
 const Label = styled.label`
   color: var(--white-color);
   font-size: 16px;
@@ -82,7 +82,7 @@ const Label = styled.label`
   display: flex;
   flex-direction: column;
   gap: 8px;
-`
+`;
 const Input = styled.input`
   color: var(--white-color);
   background-color: var(--secondary-color);
@@ -93,11 +93,11 @@ const Input = styled.input`
   &::placeholder {
     color: var(--input-placeholder-color);
   }
-`
+`;
 const Error = styled.span`
   color: red;
   font-size: 14px;
-`
+`;
 const Button = styled.button`
   display: flex;
   justify-content: center;
@@ -107,4 +107,4 @@ const Button = styled.button`
   border: none;
   background-color: var(--primary-color);
   box-shadow: 0 1px 1px 0 rgba(255, 255, 255, 40%);
-`
+`;

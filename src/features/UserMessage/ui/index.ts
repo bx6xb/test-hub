@@ -1,1 +1,1 @@
-export * from './UserMessage'
+export * from './UserMessage';

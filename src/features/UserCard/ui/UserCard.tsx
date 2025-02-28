@@ -1,13 +1,13 @@
-import { logout } from '@/entities'
-import { useAppDispatch, useAppSelector } from '@/shared'
-import styled from 'styled-components'
+import { logout } from '@/entities';
+import { useAppDispatch, useAppSelector } from '@/shared';
+import styled from 'styled-components';
 
 export const UserCard = () => {
-  const username = useAppSelector(state => state.authSlice.username)
+  const username = useAppSelector(state => state.authSlice.username);
 
-  const dispatch = useAppDispatch()
+  const dispatch = useAppDispatch();
 
-  const logoutHandler = () => dispatch(logout())
+  const logoutHandler = () => dispatch(logout());
 
   return (
     <UserCardContainer>
@@ -22,8 +22,8 @@ export const UserCard = () => {
 
       <img src="/images/logout.svg" alt="logout" onClick={logoutHandler} width={16} height={16} />
     </UserCardContainer>
-  )
-}
+  );
+};
 
 const UserCardContainer = styled.div`
   height: 72px;
@@ -37,21 +37,21 @@ const UserCardContainer = styled.div`
   > img {
     cursor: pointer;
   }
-`
+`;
 const UserInfo = styled.div`
   display: flex;
   align-items: center;
   gap: 12px;
-`
+`;
 const NameAndWallet = styled.div`
   display: flex;
   flex-direction: column;
-`
+`;
 const Name = styled.span`
   font-size: 16px;
   font-weight: 600;
-`
+`;
 const Wallet = styled.span`
   font-size: 14px;
   font-weight: 500;
-`
+`;

@@ -1,9 +1,9 @@
 export type AlertType = {
-  id: string
-  type: 'success' | 'error'
-  message: string
-}
+  id: string;
+  type: 'success' | 'error';
+  message: string;
+};
 export type AppState = {
-  searchTerm: string
-  alerts: AlertType[]
-}
+  searchTerm: string;
+  alerts: AlertType[];
+};

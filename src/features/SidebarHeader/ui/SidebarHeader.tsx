@@ -1,5 +1,5 @@
-import styled from 'styled-components'
-import { LangSwitcher } from './LangSwitcher'
+import styled from 'styled-components';
+import { LangSwitcher } from './LangSwitcher';
 
 export const SidebarHeader = () => {
   return (
@@ -8,12 +8,12 @@ export const SidebarHeader = () => {
 
       <LangSwitcher />
     </LogoAndLang>
-  )
-}
+  );
+};
 
 const LogoAndLang = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
-`
+`;

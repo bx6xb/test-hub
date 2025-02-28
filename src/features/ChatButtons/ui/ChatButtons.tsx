@@ -1,24 +1,24 @@
-import { useAddChatMutation, useGetChatId } from '@/shared'
-import styled from 'styled-components'
-import { Search } from './Search'
+import { useAddChatMutation, useGetChatId } from '@/shared';
+import styled from 'styled-components';
+import { Search } from './Search';
 
 export const ChatButtons = () => {
-  const [addChat] = useAddChatMutation()
-  const { setChatId } = useGetChatId()
+  const [addChat] = useAddChatMutation();
+  const { setChatId } = useGetChatId();
 
   const addChatHandler = async () => {
     try {
-      const { data } = await addChat({ name: 'New chat' })
+      const { data } = await addChat({ name: 'New chat' });
 
       if (data) {
-        const { id } = data
+        const { id } = data;
 
-        setChatId(id)
+        setChatId(id);
       }
     } catch (e) {
-      console.error(e)
+      console.error(e);
     }
-  }
+  };
 
   return (
     <ChatButtonsContainer>
@@ -28,15 +28,15 @@ export const ChatButtons = () => {
 
       <Search />
     </ChatButtonsContainer>
-  )
-}
+  );
+};
 
 const ChatButtonsContainer = styled.div`
   display: flex;
   gap: 10px;
   margin-bottom: 16px;
   user-select: none;
-`
+`;
 const AddChat = styled.button`
   width: 38px;
   height: 38px;
@@ -47,4 +47,4 @@ const AddChat = styled.button`
   align-items: center;
   border: 1px solid var(--border-color);
   border-radius: 8px;
-`
+`;

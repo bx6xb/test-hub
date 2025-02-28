@@ -1,15 +1,15 @@
-import { CopyText } from '@/shared'
-import { marked } from 'marked'
-import styled from 'styled-components'
+import { CopyText } from '@/shared';
+import { marked } from 'marked';
+import styled from 'styled-components';
 
 type Props = {
-  messageText: string
-  time: string
-}
+  messageText: string;
+  time: string;
+};
 
 export const AIMessage = ({ messageText, time }: Props) => {
-  const aimodel = 'ChatGPT'
-  const aiversion = 'gpt-3.5-turbo'
+  const aimodel = 'ChatGPT';
+  const aiversion = 'gpt-3.5-turbo';
 
   return (
     <AIMessageContainer>
@@ -32,15 +32,15 @@ export const AIMessage = ({ messageText, time }: Props) => {
         {time}
       </CopyAndTime>
     </AIMessageContainer>
-  )
-}
+  );
+};
 
 const AIMessageContainer = styled.div`
   max-width: 65%;
   display: flex;
   flex-direction: column;
   gap: 8px;
-`
+`;
 const AIModel = styled.div`
   width: 294px;
   display: flex;
@@ -49,7 +49,7 @@ const AIModel = styled.div`
   gap: 10px;
   font-size: 16px;
   font-weight: 400;
-`
+`;
 const AIVersion = styled.div`
   display: flex;
   justify-content: center;
@@ -59,16 +59,16 @@ const AIVersion = styled.div`
   padding: 4px 12px;
   font-size: 14px;
   font-weight: 500;
-`
+`;
 const Message = styled.div`
   display: flex;
   gap: 16px;
-`
+`;
 const MessageText = styled.p`
   font-size: 18px;
   font-weight: 400;
   margin-top: 8px;
-`
+`;
 const CopyAndTime = styled.div`
   width: 294px;
   display: flex;
@@ -77,7 +77,7 @@ const CopyAndTime = styled.div`
   gap: 98px;
   font-size: 12px;
   font-weight: 400;
-`
+`;
 const Copy = styled.div`
   display: flex;
   align-items: center;
@@ -85,4 +85,4 @@ const Copy = styled.div`
   color: #9ca3af;
   font-size: 16px;
   font-weight: 400;
-`
+`;

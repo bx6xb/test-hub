@@ -6,6 +6,7 @@
   "homepage": "https://test-hub-taupe.vercel.app",
   "scripts": {
     "dev": "vite",
+    "format": "pnpm prettier --write .",
     "build": "tsc -b && vite build",
     "preview": "vite preview"
   },

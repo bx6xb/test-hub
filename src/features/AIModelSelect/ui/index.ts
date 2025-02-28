@@ -1,1 +1,1 @@
-export * from './AIModelSelect'
+export * from './AIModelSelect';

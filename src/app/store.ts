@@ -1,6 +1,6 @@
-import { appSlice, authSlice } from '@/entities'
-import { baseApi, rtkQueryErrorLogger } from '@/shared'
-import { configureStore } from '@reduxjs/toolkit'
+import { appSlice, authSlice } from '@/entities';
+import { baseApi, rtkQueryErrorLogger } from '@/shared';
+import { configureStore } from '@reduxjs/toolkit';
 
 export const store = configureStore({
   reducer: {
@@ -10,4 +10,4 @@ export const store = configureStore({
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware().concat(baseApi.middleware, rtkQueryErrorLogger),
-})
+});

@@ -1,4 +1,4 @@
-import { css } from 'styled-components'
+import { css } from 'styled-components';
 
 export const scrollbar = css`
   ::-webkit-scrollbar {
@@ -18,4 +18,4 @@ export const scrollbar = css`
   ::-webkit-scrollbar-thumb:hover {
     background: #357abd;
   }
-`
+`;

@@ -1,5 +1,5 @@
-import { ChatButtons, Chats, SidebarHeader, UserCard } from '@/features'
-import styled from 'styled-components'
+import { ChatButtons, Chats, SidebarHeader, UserCard } from '@/features';
+import styled from 'styled-components';
 
 export const Sidebar = () => {
   return (
@@ -14,8 +14,8 @@ export const Sidebar = () => {
 
       <UserCard />
     </SidebarContainer>
-  )
-}
+  );
+};
 
 const SidebarContainer = styled.aside`
   width: 324px;
@@ -25,8 +25,8 @@ const SidebarContainer = styled.aside`
   padding: 20px 16px;
   display: flex;
   flex-direction: column;
-`
+`;
 const Line = styled.hr`
   border: 1px solid var(--border-color);
   margin-bottom: 16px;
-`
+`;

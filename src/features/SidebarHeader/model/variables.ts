@@ -7,4 +7,4 @@ export const LANGS = [
     id: 'en',
     label: 'EN',
   },
-]
+];

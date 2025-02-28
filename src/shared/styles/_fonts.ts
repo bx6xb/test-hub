@@ -1,4 +1,4 @@
-import { css } from 'styled-components'
+import { css } from 'styled-components';
 
 export const fonts = css`
   /* ibm-plex-sans-latin-400-normal */
@@ -75,4 +75,4 @@ export const fonts = css`
       url(@fontsource/ibm-plex-sans/files/ibm-plex-sans-cyrillic-600-normal.woff) format('woff');
     unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
   }
-`
+`;

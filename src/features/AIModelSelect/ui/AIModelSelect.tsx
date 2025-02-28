@@ -1,13 +1,13 @@
-import { Arrow, Dropdown } from '@/shared'
-import { useState } from 'react'
-import styled from 'styled-components'
-import { AI_MODELS } from '../model'
+import { Arrow, Dropdown } from '@/shared';
+import { useState } from 'react';
+import styled from 'styled-components';
+import { AI_MODELS } from '../model';
 
 export const AIModelSelect = () => {
-  const [selected, setSelected] = useState('ChatGPT')
-  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [selected, setSelected] = useState('ChatGPT');
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const onOptionChange = (id: string) => setSelected(id)
+  const onOptionChange = (id: string) => setSelected(id);
 
   const mappedAIModels = AI_MODELS.map(model => ({
     id: model,
@@ -17,7 +17,7 @@ export const AIModelSelect = () => {
         {model}
       </Model>
     ),
-  }))
+  }));
 
   return (
     <Dropdown
@@ -33,8 +33,8 @@ export const AIModelSelect = () => {
         <Arrow isArrowUp={isModalOpen} />
       </Select>
     </Dropdown>
-  )
-}
+  );
+};
 
 const Select = styled.div`
   min-width: 147px;
@@ -48,11 +48,11 @@ const Select = styled.div`
   border-radius: 10px;
   cursor: pointer;
   user-select: none;
-`
+`;
 const Model = styled.div`
   display: flex;
   align-items: center;
   gap: 10px;
   font-size: 15px;
   font-weight: 500;
-`
+`;

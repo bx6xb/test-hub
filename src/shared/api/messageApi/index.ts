@@ -1,2 +1,2 @@
-export * from './messageApi'
-export * from './types'
+export * from './messageApi';
+export * from './types';

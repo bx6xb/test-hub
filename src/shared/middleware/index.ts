@@ -1,1 +1,1 @@
-export * from './rtkQueryErrorLogger'
+export * from './rtkQueryErrorLogger';

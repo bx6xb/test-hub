@@ -1,6 +1,6 @@
-import { useRef, useState } from 'react'
-import styled, { css, keyframes } from 'styled-components'
-import { Position, Props } from './types'
+import { useRef, useState } from 'react';
+import styled, { css, keyframes } from 'styled-components';
+import { Position, Props } from './types';
 
 export const Dropdown = ({
   options,
@@ -10,27 +10,27 @@ export const Dropdown = ({
   selected,
   ...position
 }: Props) => {
-  const [isOpen, setIsOpen] = useState(false)
-  const dropdownModalRef = useRef<HTMLDivElement>(null)
+  const [isOpen, setIsOpen] = useState(false);
+  const dropdownModalRef = useRef<HTMLDivElement>(null);
 
   const toggleIsOpenHandler = () => {
-    getModalState && getModalState(!isOpen)
-    setIsOpen(!isOpen)
-  }
+    getModalState && getModalState(!isOpen);
+    setIsOpen(!isOpen);
+  };
 
   const onModalBlur = () => {
     if (isOpen) {
-      toggleIsOpenHandler()
+      toggleIsOpenHandler();
     }
-  }
+  };
 
   const onChildrenClick = () => {
     if (!isOpen) {
-      toggleIsOpenHandler()
+      toggleIsOpenHandler();
 
-      setTimeout(() => dropdownModalRef.current && dropdownModalRef.current.focus(), 0)
+      setTimeout(() => dropdownModalRef.current && dropdownModalRef.current.focus(), 0);
     }
-  }
+  };
 
   return (
     <DropdownContainer>
@@ -52,8 +52,8 @@ export const Dropdown = ({
         )}
       </DropdownWrapper>
     </DropdownContainer>
-  )
-}
+  );
+};
 
 // animations
 const fadeIn = keyframes`
@@ -65,12 +65,12 @@ const fadeIn = keyframes`
     opacity: 1;
     transform: translateY(0);
   }
-`
+`;
 
 // styles
 const DropdownContainer = styled.div`
   position: relative;
-`
+`;
 const DropdownWrapper = styled.div<Position & { $isOpen: boolean }>`
   position: absolute;
   top: ${({ top }) => top || 'auto'};
@@ -85,7 +85,7 @@ const DropdownWrapper = styled.div<Position & { $isOpen: boolean }>`
       animation: ${fadeIn} 0.3s ease-in-out;
     `}
   pointer-events: ${({ $isOpen }) => ($isOpen ? 'auto' : 'none')};
-`
+`;
 const DropdownModal = styled.div`
   display: flex;
   flex-direction: column;
@@ -94,7 +94,7 @@ const DropdownModal = styled.div`
   border-radius: 8px;
   padding: 8px;
   outline: none;
-`
+`;
 const DropdownOption = styled.div<{ $isSelected: boolean }>`
   display: flex;
   align-items: center;
@@ -108,4 +108,4 @@ const DropdownOption = styled.div<{ $isSelected: boolean }>`
     css`
       background-color: var(--border-color);
     `}
-`
+`;

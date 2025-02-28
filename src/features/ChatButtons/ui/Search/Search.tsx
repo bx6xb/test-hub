@@ -1,28 +1,28 @@
-import { setSearchTerm } from '@/entities'
-import { useAppDispatch, useAppSelector } from '@/shared'
-import { ChangeEvent, useEffect, useRef, useState } from 'react'
-import styled, { css } from 'styled-components'
+import { setSearchTerm } from '@/entities';
+import { useAppDispatch, useAppSelector } from '@/shared';
+import { ChangeEvent, useEffect, useRef, useState } from 'react';
+import styled, { css } from 'styled-components';
 
 export const Search = () => {
-  const searchTerm = useAppSelector(state => state.appSlice.searchTerm)
-  const dispatch = useAppDispatch()
+  const searchTerm = useAppSelector(state => state.appSlice.searchTerm);
+  const dispatch = useAppDispatch();
 
-  const [isSearching, setIsSearching] = useState(false)
-  const inputRef = useRef<HTMLInputElement>(null)
+  const [isSearching, setIsSearching] = useState(false);
+  const inputRef = useRef<HTMLInputElement>(null);
 
-  const toggleSearching = () => setIsSearching(!isSearching)
+  const toggleSearching = () => setIsSearching(!isSearching);
 
   const onInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-    dispatch(setSearchTerm(e.currentTarget.value))
-  }
+    dispatch(setSearchTerm(e.currentTarget.value));
+  };
 
   useEffect(() => {
     if (isSearching) {
-      inputRef.current?.focus()
+      inputRef.current?.focus();
     } else {
-      dispatch(setSearchTerm(''))
+      dispatch(setSearchTerm(''));
     }
-  }, [isSearching])
+  }, [isSearching]);
 
   return (
     <SearchContainer $isSearching={isSearching}>
@@ -41,8 +41,8 @@ export const Search = () => {
         $isSearching={isSearching}
       />
     </SearchContainer>
-  )
-}
+  );
+};
 
 const SearchContainer = styled.div<{ $isSearching: boolean }>`
   width: 40px;
@@ -62,7 +62,7 @@ const SearchContainer = styled.div<{ $isSearching: boolean }>`
       min-width: 40px;
       overflow: visible;
     `}
-`
+`;
 const SearchButton = styled.button`
   width: 40px;
   height: 40px;
@@ -72,7 +72,7 @@ const SearchButton = styled.button`
   flex-shrink: 0;
   color: var(--border-color);
   font-weight: 600;
-`
+`;
 const Input = styled.input<{ $isSearching: boolean }>`
   all: unset;
   flex: 1;
@@ -83,4 +83,4 @@ const Input = styled.input<{ $isSearching: boolean }>`
     css`
       pointer-events: none;
     `}
-`
+`;

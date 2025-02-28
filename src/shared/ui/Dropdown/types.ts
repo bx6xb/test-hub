@@ -1,21 +1,21 @@
-import { ReactNode } from 'react'
+import { ReactNode } from 'react';
 
 export type Position = {
-  top?: string
-  right?: string
-  bottom?: string
-  left?: string
-}
+  top?: string;
+  right?: string;
+  bottom?: string;
+  left?: string;
+};
 
 type Option = {
-  id: string
-  label: ReactNode
-}
+  id: string;
+  label: ReactNode;
+};
 
 export type Props = {
-  options: Option[]
-  children: ReactNode
-  selected: string
-  getModalState?: (isOpen: boolean) => void
-  onOptionChange(index: string): void
-} & Position
+  options: Option[];
+  children: ReactNode;
+  selected: string;
+  getModalState?: (isOpen: boolean) => void;
+  onOptionChange(index: string): void;
+} & Position;

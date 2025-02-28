@@ -1,2 +1,2 @@
-export * from './chatApi'
-export * from './types'
+export * from './chatApi';
+export * from './types';

@@ -1,11 +1,11 @@
-import { API_URL, baseApi } from '@/shared'
+import { API_URL, baseApi } from '@/shared';
 import {
   FetchMessagesData,
   FetchMessagesResponse,
   GetChatStreamParams,
   SendMessageBody,
   SendMessageResponse,
-} from './types'
+} from './types';
 
 export const messageApi = baseApi.injectEndpoints({
   endpoints: builder => ({
@@ -17,8 +17,8 @@ export const messageApi = baseApi.injectEndpoints({
         },
       }),
       providesTags: result => {
-        console.log('Message data loaded:', result)
-        return ['message']
+        console.log('Message data loaded:', result);
+        return ['message'];
       },
     }),
     sendMessage: builder.mutation<SendMessageResponse, SendMessageBody>({
@@ -28,8 +28,8 @@ export const messageApi = baseApi.injectEndpoints({
         method: 'POST',
       }),
       invalidatesTags: result => {
-        console.log('Message data loaded:', result)
-        return ['message']
+        console.log('Message data loaded:', result);
+        return ['message'];
       },
     }),
     getChatStream: builder.query<string[], GetChatStreamParams>({
@@ -38,31 +38,31 @@ export const messageApi = baseApi.injectEndpoints({
         { chatId },
         { updateCachedData, cacheEntryRemoved, cacheDataLoaded }
       ) {
-        const eventSource = new EventSource(`${API_URL}chat/${chatId}/stream`)
+        const eventSource = new EventSource(`${API_URL}chat/${chatId}/stream`);
 
         try {
-          await cacheDataLoaded
+          await cacheDataLoaded;
 
           eventSource.onmessage = event => {
-            const message = event.data.trim()
+            const message = event.data.trim();
 
-            console.log('stream message', message)
+            console.log('stream message', message);
 
             updateCachedData(draft => {
-              draft.push(message)
-            })
-          }
+              draft.push(message);
+            });
+          };
         } catch (error) {
-          console.error('SSE error:', error)
+          console.error('SSE error:', error);
         }
 
-        await cacheEntryRemoved
-        eventSource.close()
+        await cacheEntryRemoved;
+        eventSource.close();
       },
       // providesTags: ['message'],
     }),
   }),
-})
+});
 
 export const { useLazyFetchMessagesQuery, useSendMessageMutation, useGetChatStreamQuery } =
-  messageApi
+  messageApi;

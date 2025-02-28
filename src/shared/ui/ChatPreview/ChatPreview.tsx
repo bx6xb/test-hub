@@ -1,26 +1,26 @@
-import { useDeleteChatMutation, useGetChatId } from '@/shared'
-import styled from 'styled-components'
+import { useDeleteChatMutation, useGetChatId } from '@/shared';
+import styled from 'styled-components';
 
 type Props = {
-  id: string
-  chatName: string
-  toggleEditMode(): void
-}
+  id: string;
+  chatName: string;
+  toggleEditMode(): void;
+};
 
 export const ChatPreview = ({ chatName, id, toggleEditMode }: Props) => {
-  const [deleteChat] = useDeleteChatMutation()
+  const [deleteChat] = useDeleteChatMutation();
 
-  const { chatId, setChatId } = useGetChatId()
+  const { chatId, setChatId } = useGetChatId();
 
   const deleteChatHandler = () => {
-    deleteChat(id)
+    deleteChat(id);
 
     if (chatId === id) {
-      setChatId('')
+      setChatId('');
     }
-  }
+  };
 
-  const setSelectedChatIdHandler = () => setChatId(id)
+  const setSelectedChatIdHandler = () => setChatId(id);
 
   return (
     <ChatContainer $isSelected={chatId === id}>
@@ -38,8 +38,8 @@ export const ChatPreview = ({ chatName, id, toggleEditMode }: Props) => {
 
       <img src="/images/trash.svg" alt="delete chat" onClick={deleteChatHandler} />
     </ChatContainer>
-  )
-}
+  );
+};
 
 const ChatContainer = styled.div<{ $isSelected: boolean }>`
   display: flex;
@@ -57,10 +57,10 @@ const ChatContainer = styled.div<{ $isSelected: boolean }>`
   & > img {
     cursor: pointer;
   }
-`
+`;
 const ChatName = styled.div`
   font-size: 16px;
   font-weight: 500;
   flex: 1;
   cursor: pointer;
-`
+`;

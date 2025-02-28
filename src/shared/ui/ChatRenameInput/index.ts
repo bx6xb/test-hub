@@ -1,1 +1,1 @@
-export * from './ChatRenameInput'
+export * from './ChatRenameInput';

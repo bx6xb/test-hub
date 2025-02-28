@@ -1,4 +1,4 @@
-import { css } from 'styled-components'
+import { css } from 'styled-components';
 
 export const variables = css`
   :root {
@@ -9,4 +9,4 @@ export const variables = css`
     --white-color: #fff;
     --input-placeholder-color: #616d8d;
   }
-`
+`;

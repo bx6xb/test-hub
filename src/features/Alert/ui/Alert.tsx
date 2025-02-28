@@ -1,9 +1,9 @@
-import { useAppSelector } from '@/shared'
-import styled from 'styled-components'
-import { AlertMessage } from './AlertMessage'
+import { useAppSelector } from '@/shared';
+import styled from 'styled-components';
+import { AlertMessage } from './AlertMessage';
 
 export const Alert = () => {
-  const alerts = useAppSelector(state => state.appSlice.alerts)
+  const alerts = useAppSelector(state => state.appSlice.alerts);
 
   return (
     <AlertContainer>
@@ -11,8 +11,8 @@ export const Alert = () => {
         <AlertMessage key={alert.id} {...alert} />
       ))}
     </AlertContainer>
-  )
-}
+  );
+};
 
 const AlertContainer = styled.div`
   max-width: 400px;
@@ -24,4 +24,4 @@ const AlertContainer = styled.div`
   left: 50%;
   transform: translateX(-50%);
   top: 20px;
-`
+`;

@@ -1,4 +1,4 @@
-import { css } from 'styled-components'
+import { css } from 'styled-components';
 
 export const reset = css`
   *,
@@ -18,4 +18,4 @@ export const reset = css`
     cursor: pointer;
     color: var(--white-color);
   }
-`
+`;

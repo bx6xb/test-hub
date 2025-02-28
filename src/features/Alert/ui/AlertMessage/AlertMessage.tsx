@@ -1,24 +1,24 @@
-import { AlertType, removeAlert } from '@/entities'
-import { useAppDispatch } from '@/shared'
-import { useEffect, useState } from 'react'
-import styled, { keyframes } from 'styled-components'
+import { AlertType, removeAlert } from '@/entities';
+import { useAppDispatch } from '@/shared';
+import { useEffect, useState } from 'react';
+import styled, { keyframes } from 'styled-components';
 
 export const AlertMessage = ({ id, message, type }: AlertType) => {
-  const dispatch = useAppDispatch()
-  const [isVisible, setIsVisible] = useState(true)
+  const dispatch = useAppDispatch();
+  const [isVisible, setIsVisible] = useState(true);
 
   const removeAlertHandler = () => {
-    setIsVisible(false)
-    setTimeout(() => dispatch(removeAlert(id)), 500)
-  }
+    setIsVisible(false);
+    setTimeout(() => dispatch(removeAlert(id)), 500);
+  };
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      removeAlertHandler()
-    }, 3000)
+      removeAlertHandler();
+    }, 3000);
 
-    return () => clearTimeout(timer)
-  }, [])
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <AlertMessageContainer $isError={type === 'error'} $isVisible={isVisible}>
@@ -35,8 +35,8 @@ export const AlertMessage = ({ id, message, type }: AlertType) => {
         X
       </Close>
     </AlertMessageContainer>
-  )
-}
+  );
+};
 
 // animations
 const fadeIn = keyframes`
@@ -48,7 +48,7 @@ const fadeIn = keyframes`
     opacity: 1;
     transform: translateY(0);
   }
-`
+`;
 const fadeOut = keyframes`
   from {
     opacity: 1;
@@ -62,7 +62,7 @@ const fadeOut = keyframes`
     max-height: 0;
     margin-bottom: 0;
   }
-`
+`;
 
 // styles
 const AlertMessageContainer = styled.div<{ $isError: boolean; $isVisible: boolean }>`
@@ -83,10 +83,10 @@ const AlertMessageContainer = styled.div<{ $isError: boolean; $isVisible: boolea
     max-height 0.4s ease-out,
     opacity 0.4s ease-out,
     margin-bottom 0.4s ease-out;
-`
+`;
 const Message = styled.span`
   flex: 1;
-`
+`;
 const Close = styled.button`
   font-weight: 600;
-`
+`;

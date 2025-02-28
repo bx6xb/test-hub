@@ -1,16 +1,16 @@
-import styled, { css, keyframes } from 'styled-components'
+import styled, { css, keyframes } from 'styled-components';
 
 type Props = {
-  isHidden: boolean
-}
+  isHidden: boolean;
+};
 
 export const Preloader = ({ isHidden }: Props) => {
   return (
     <PreloaderContainer $isHidden={isHidden}>
       <Image src="/images/ChatGPT.svg" alt="preloader" />
     </PreloaderContainer>
-  )
-}
+  );
+};
 
 // animations
 const bounce = keyframes`
@@ -20,7 +20,7 @@ const bounce = keyframes`
   100% {
     transform: rotate(360deg);
   }
-`
+`;
 
 // styles
 const PreloaderContainer = styled.div<{ $isHidden: boolean }>`
@@ -43,9 +43,9 @@ const PreloaderContainer = styled.div<{ $isHidden: boolean }>`
       opacity: 0;
       pointer-events: none;
     `}
-`
+`;
 const Image = styled.img`
   width: 50px;
   height: 50px;
   animation: ${bounce} 1.5s ease-in-out infinite;
-`
+`;

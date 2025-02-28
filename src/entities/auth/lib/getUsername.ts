@@ -1,1 +1,1 @@
-export const getUsername = (email: string): string => email.split('@')[0]
+export const getUsername = (email: string): string => email.split('@')[0];

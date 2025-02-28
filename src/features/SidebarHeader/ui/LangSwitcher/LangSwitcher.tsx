@@ -1,22 +1,22 @@
-import { Arrow, Dropdown } from '@/shared'
-import { useEffect, useState } from 'react'
-import styled from 'styled-components'
-import { LANGS } from '../../model'
-import { useTranslation } from 'react-i18next'
+import { Arrow, Dropdown } from '@/shared';
+import { useEffect, useState } from 'react';
+import styled from 'styled-components';
+import { LANGS } from '../../model';
+import { useTranslation } from 'react-i18next';
 
 export const LangSwitcher = () => {
-  const { i18n } = useTranslation()
+  const { i18n } = useTranslation();
 
-  const [isModalOpen, setIsModalOpen] = useState(false)
-  const [selectedLang, setSelectedLang] = useState(i18n.language)
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedLang, setSelectedLang] = useState(i18n.language);
 
   useEffect(() => {
-    i18n.changeLanguage(selectedLang)
-  }, [selectedLang])
+    i18n.changeLanguage(selectedLang);
+  }, [selectedLang]);
 
   const onLangChangeHandler = (id: string) => {
-    setSelectedLang(id)
-  }
+    setSelectedLang(id);
+  };
 
   return (
     <Dropdown
@@ -32,8 +32,8 @@ export const LangSwitcher = () => {
         <Arrow isArrowUp={isModalOpen} />
       </LangSwitcherContainer>
     </Dropdown>
-  )
-}
+  );
+};
 
 const LangSwitcherContainer = styled.div`
   display: flex;
@@ -41,8 +41,8 @@ const LangSwitcherContainer = styled.div`
   align-content: center;
   cursor: pointer;
   user-select: none;
-`
+`;
 const CurrentLang = styled.span`
   font-size: 16px;
   font-weight: 600;
-`
+`;

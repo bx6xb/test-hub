@@ -1,2 +1,2 @@
-export * from './userDataSchema'
-export * from './inputSchema'
+export * from './userDataSchema';
+export * from './inputSchema';

@@ -1,13 +1,13 @@
-import { ReactNode } from 'react'
-import { Provider } from 'react-redux'
-import { store } from '../store'
-import { I18nextProvider } from 'react-i18next'
-import { GlobalStyles, i18n } from '@/shared'
-import { BrowserRouter } from 'react-router-dom'
+import { ReactNode } from 'react';
+import { Provider } from 'react-redux';
+import { store } from '../store';
+import { I18nextProvider } from 'react-i18next';
+import { GlobalStyles, i18n } from '@/shared';
+import { BrowserRouter } from 'react-router-dom';
 
 type Props = {
-  children: ReactNode
-}
+  children: ReactNode;
+};
 
 export const Providers = ({ children }: Props) => {
   return (
@@ -19,5 +19,5 @@ export const Providers = ({ children }: Props) => {
         </BrowserRouter>
       </I18nextProvider>
     </Provider>
-  )
-}
+  );
+};
