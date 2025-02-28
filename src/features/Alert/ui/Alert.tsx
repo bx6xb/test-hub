@@ -24,5 +24,4 @@ const AlertContainer = styled.div`
   left: 50%;
   transform: translateX(-50%);
   top: 20px;
-  transition: 0.5s;
 `

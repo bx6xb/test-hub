@@ -27,11 +27,7 @@ export const Search = () => {
   return (
     <SearchContainer $isSearching={isSearching}>
       <SearchButton onClick={toggleSearching}>
-        {isSearching ? (
-          <img src="/close.svg" alt="colse search" width={18} height={18} />
-        ) : (
-          <img src="/search.svg" alt="search chat" width={18} height={18} />
-        )}
+        {isSearching ? 'X' : <img src="/search.svg" alt="search chat" width={18} height={18} />}
       </SearchButton>
 
       <Input
@@ -70,6 +66,8 @@ const SearchButton = styled.button`
   justify-content: center;
   align-items: center;
   flex-shrink: 0;
+  color: var(--border-color);
+  font-weight: 600;
 `
 const Input = styled.input<{ $isSearching: boolean }>`
   all: unset;

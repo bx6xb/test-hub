@@ -4,10 +4,7 @@ import { AlertType, AppState } from './types'
 
 const initialState: AppState = {
   searchTerm: '',
-  alerts: [
-    { id: 'qwe', type: 'success', message: 'Success!!!' },
-    { id: 'asd', type: 'error', message: 'Error!!!' },
-  ],
+  alerts: [],
 }
 
 export const appSlice = createSlice({

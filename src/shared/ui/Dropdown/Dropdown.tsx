@@ -55,6 +55,7 @@ export const Dropdown = ({
   )
 }
 
+// animations
 const fadeIn = keyframes`
   from {
     opacity: 0;
@@ -65,6 +66,8 @@ const fadeIn = keyframes`
     transform: translateY(0);
   }
 `
+
+// styles
 const DropdownContainer = styled.div`
   position: relative;
 `
