@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { getUsername } from '../lib'
-import { UserData } from '@/shared'
+import { UserData, userDataSchema } from '@/shared'
 
 type AuthState = {
   isAuth: boolean | null
@@ -19,9 +19,17 @@ export const authSlice = createSlice({
       if (stringifiedUserData) {
         const userData = JSON.parse(stringifiedUserData) as UserData
 
-        state.isAuth = !!userData
-        state.username = getUsername(userData.email)
+        const parsedData = userDataSchema.safeParse(userData)
+
+        if (parsedData.success) {
+          state.isAuth = true
+          state.username = getUsername(userData.email)
+
+          return
+        }
       }
+
+      state.isAuth = false
     },
     login(state, action: PayloadAction<UserData>) {
       const stringifiedData = JSON.stringify(action.payload)

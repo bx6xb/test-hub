@@ -1,12 +1,12 @@
 import { SubmitHandler, useForm } from 'react-hook-form'
 import styled from 'styled-components'
 import { z } from 'zod'
-import { loginSchema } from '../model'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useAppDispatch } from '@/shared'
 import { login } from '@/entities'
+import { userDataSchema } from '@/shared/validation'
 
-type Inputs = z.infer<typeof loginSchema>
+type Inputs = z.infer<typeof userDataSchema>
 
 export const LoginPage = () => {
   const dispatch = useAppDispatch()
@@ -16,7 +16,7 @@ export const LoginPage = () => {
     handleSubmit,
     formState: { errors },
   } = useForm<Inputs>({
-    resolver: zodResolver(loginSchema),
+    resolver: zodResolver(userDataSchema),
   })
 
   const onSubmitHandler: SubmitHandler<Inputs> = data => {
@@ -90,6 +90,9 @@ const Error = styled.span`
   font-size: 12px;
 `
 const Button = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 52px;
   border-radius: 8px;
   border: none;
