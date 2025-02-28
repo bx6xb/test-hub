@@ -1,14 +1,16 @@
 import { useAddChatMutation, useGetChatId } from '@/shared';
 import styled from 'styled-components';
 import { Search } from './Search';
+import { useTranslation } from 'react-i18next';
 
 export const ChatButtons = () => {
   const [addChat] = useAddChatMutation();
   const { setChatId } = useGetChatId();
+  const { t } = useTranslation();
 
   const addChatHandler = async () => {
     try {
-      const { data } = await addChat({ name: 'New chat' });
+      const { data } = await addChat({ name: t('ChatButtons_new_chat_name') });
 
       if (data) {
         const { id } = data;

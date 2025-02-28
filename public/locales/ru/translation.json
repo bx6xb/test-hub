@@ -21,6 +21,9 @@
   "file": "ChatRenameInput.tsx",
   "ChatRenameInput_min_length_error": "Строка должна содержать хотя бы 1 символ",
 
+  "file": "ChatButtons.tsx",
+  "ChatButtons_new_chat_name": "Новый чат",
+
   "file": "rtkQueryErrorLogger.ts",
   "rtkQueryErrorLogger_server_error": "Ошибка сервера",
   "rtkQueryErrorLogger_network_error": "Ошибка сети"

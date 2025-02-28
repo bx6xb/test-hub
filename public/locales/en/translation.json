@@ -21,6 +21,9 @@
   "file": "ChatRenameInput.tsx",
   "ChatRenameInput_min_length_error": "The string must contain at least 1 character",
 
+  "file": "ChatButtons.tsx",
+  "ChatButtons_new_chat_name": "New chat",
+
   "file": "rtkQueryErrorLogger.ts",
   "rtkQueryErrorLogger_server_error": "Server error",
   "rtkQueryErrorLogger_network_error": "Network error"
