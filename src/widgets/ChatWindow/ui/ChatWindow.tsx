@@ -6,12 +6,11 @@ import styled from 'styled-components';
 
 export const ChatWindow = () => {
   const { chatId } = useGetChatId();
-
   const { t } = useTranslation();
 
   useEffect(() => {
     document.title = 'Chat';
-  }, [chatId]);
+  }, []);
 
   return (
     <ChatWindowContainer>

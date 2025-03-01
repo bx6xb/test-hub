@@ -1,9 +1,15 @@
 import { ChatButtons, Chats, SidebarHeader, UserCard } from '@/features';
-import { useState } from 'react';
+import { useGetChatId } from '@/shared';
+import { useEffect, useState } from 'react';
 import styled, { css } from 'styled-components';
 
 export const Sidebar = () => {
+  const { chatId } = useGetChatId();
   const [showSidebar, setShowSidebar] = useState(false);
+
+  useEffect(() => {
+    setShowSidebar(false);
+  }, [chatId]);
 
   const toggleShowSidebarHandler = () => setShowSidebar(!showSidebar);
 

@@ -64,4 +64,5 @@ const MessagesContainer = styled.div`
   gap: 16px;
   flex: 1;
   overflow-y: auto;
+  padding-right: 10px;
 `;
