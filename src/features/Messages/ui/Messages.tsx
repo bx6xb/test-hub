@@ -23,8 +23,10 @@ export const Messages = () => {
   }, [chatId]);
 
   useEffect(() => {
-    if (messagesEndRef.current) {
-      messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
+    const container = messagesEndRef.current?.parentElement;
+
+    if (container) {
+      container.scrollTop = container.scrollHeight;
     }
   }, [messages]);
 
