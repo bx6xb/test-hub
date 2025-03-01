@@ -1,12 +1,19 @@
+import { useEffect, useState } from 'react';
 import styled, { css, keyframes } from 'styled-components';
 
-type Props = {
-  isHidden: boolean;
-};
+export const Preloader = () => {
+  const [isAppLoading, setIsAppLoading] = useState(true);
 
-export const Preloader = ({ isHidden }: Props) => {
+  useEffect(() => {
+    const id = setTimeout(() => {
+      setIsAppLoading(false);
+    }, 1000);
+
+    return () => clearTimeout(id);
+  }, []);
+
   return (
-    <PreloaderContainer $isHidden={isHidden}>
+    <PreloaderContainer $isHidden={!isAppLoading}>
       <Image src="/images/ChatGPT.svg" alt="preloader" />
     </PreloaderContainer>
   );
