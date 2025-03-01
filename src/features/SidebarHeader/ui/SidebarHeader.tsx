@@ -1,7 +1,9 @@
 import styled from 'styled-components';
 import { LangSwitcher } from './LangSwitcher';
+import { memo } from 'react';
 
-export const SidebarHeader = () => {
+export const SidebarHeader = memo(() => {
+  console.log('SidebarHeader');
   return (
     <LogoAndLang>
       <img src="/images/logo.svg" alt="logo" width={104} height={30} />
@@ -9,11 +11,17 @@ export const SidebarHeader = () => {
       <LangSwitcher />
     </LogoAndLang>
   );
-};
+});
 
 const LogoAndLang = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
 `;

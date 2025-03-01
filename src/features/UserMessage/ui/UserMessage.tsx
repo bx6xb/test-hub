@@ -16,7 +16,7 @@ export const UserMessage = ({ messageText, time }: Props) => {
         <MessageText>{messageText}</MessageText>
       </Message>
 
-      <img src="/images/user.svg" alt="user avatar" />
+      <UserAvatar src="/images/user.svg" alt="user avatar" />
     </UserMessageContainer>
   );
 };
@@ -27,6 +27,10 @@ const UserMessageContainer = styled.div`
   gap: 10px;
   align-items: flex-end;
   align-self: flex-end;
+
+  @media (max-width: 768px) {
+    max-width: 100%;
+  }
 `;
 const Message = styled.div`
   display: flex;
@@ -47,10 +51,23 @@ const Message = styled.div`
 const MessageText = styled.p`
   font-size: 18px;
   font-weight: 400;
+
+  @media (max-width: 768px) {
+    font-size: 14px;
+  }
 `;
 const Time = styled.span`
   font-size: 12px;
   position: absolute;
   bottom: 7px;
   right: 8px;
+`;
+const UserAvatar = styled.img`
+  width: 40px;
+  height: 40px;
+
+  @media (max-width: 768px) {
+    width: 35px;
+    height: 35px;
+  }
 `;

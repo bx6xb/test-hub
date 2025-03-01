@@ -50,7 +50,7 @@ const Input = styled.input`
   border: 1px solid var(--border-color);
   border-radius: 10px;
   background-color: transparent;
-  padding: 0 20px;
+  padding: 0 70px 0 20px;
   color: var(--white-color);
 
   &::placeholder {

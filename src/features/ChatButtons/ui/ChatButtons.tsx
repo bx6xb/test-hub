@@ -2,8 +2,10 @@ import { useAddChatMutation, useGetChatId } from '@/shared';
 import styled from 'styled-components';
 import { Search } from './Search';
 import { useTranslation } from 'react-i18next';
+import { memo } from 'react';
 
-export const ChatButtons = () => {
+export const ChatButtons = memo(() => {
+  console.log('ChatButtons');
   const [addChat] = useAddChatMutation();
   const { setChatId } = useGetChatId();
   const { t } = useTranslation();
@@ -31,7 +33,7 @@ export const ChatButtons = () => {
       <Search />
     </ChatButtonsContainer>
   );
-};
+});
 
 const ChatButtonsContainer = styled.div`
   display: flex;

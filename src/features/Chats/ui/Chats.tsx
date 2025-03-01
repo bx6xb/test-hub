@@ -1,8 +1,10 @@
 import styled from 'styled-components';
 import { Chat } from './Chat';
 import { Loader, useAppSelector, useFetchChatsQuery } from '@/shared';
+import { memo } from 'react';
 
-export const Chats = () => {
+export const Chats = memo(() => {
+  console.log('Chats');
   const searchTerm = useAppSelector(state => state.appSlice.searchTerm);
 
   const { data, isLoading } = useFetchChatsQuery({});
@@ -15,7 +17,7 @@ export const Chats = () => {
       {isLoading ? <Loader /> : filteredChats.map(chat => <Chat key={chat.id} {...chat} />)}
     </ChatsContainer>
   );
-};
+});
 
 const ChatsContainer = styled.div`
   display: flex;

@@ -19,7 +19,7 @@ export const AIMessage = ({ messageText, time }: Props) => {
       </AIModel>
 
       <Message>
-        <img src="/images/ChatGPT.svg" alt="chat gpt" width={40} height={40} />
+        <AIAvatar src="/images/ChatGPT.svg" alt="chat gpt" />
         <MessageText dangerouslySetInnerHTML={{ __html: marked(messageText) }} />
       </Message>
 
@@ -40,6 +40,10 @@ const AIMessageContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 8px;
+
+  @media (max-width: 768px) {
+    max-width: 100%;
+  }
 `;
 const AIModel = styled.div`
   width: 294px;
@@ -64,10 +68,23 @@ const Message = styled.div`
   display: flex;
   gap: 16px;
 `;
+const AIAvatar = styled.img`
+  width: 40px;
+  height: 40px;
+
+  @media (max-width: 768px) {
+    width: 35px;
+    height: 35px;
+  }
+`;
 const MessageText = styled.p`
   font-size: 18px;
   font-weight: 400;
   margin-top: 8px;
+
+  @media (max-width: 768px) {
+    font-size: 14px;
+  }
 `;
 const CopyAndTime = styled.div`
   width: 294px;

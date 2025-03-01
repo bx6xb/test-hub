@@ -10,12 +10,6 @@ export const Search = () => {
   const [isSearching, setIsSearching] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const toggleSearching = () => setIsSearching(!isSearching);
-
-  const onInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-    dispatch(setSearchTerm(e.currentTarget.value));
-  };
-
   useEffect(() => {
     if (isSearching) {
       inputRef.current?.focus();
@@ -23,6 +17,12 @@ export const Search = () => {
       dispatch(setSearchTerm(''));
     }
   }, [isSearching]);
+
+  const toggleSearching = () => setIsSearching(!isSearching);
+
+  const onInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+    dispatch(setSearchTerm(e.currentTarget.value));
+  };
 
   return (
     <SearchContainer $isSearching={isSearching}>
@@ -59,8 +59,8 @@ const SearchContainer = styled.div<{ $isSearching: boolean }>`
     $isSearching &&
     css`
       flex: 1;
-      min-width: 40px;
-      overflow: visible;
+      min-width: 150px;
+      max-width: 300px;
     `}
 `;
 const SearchButton = styled.button`
@@ -74,6 +74,7 @@ const SearchButton = styled.button`
   font-weight: 600;
 `;
 const Input = styled.input<{ $isSearching: boolean }>`
+  min-width: 0;
   all: unset;
   flex: 1;
   margin-right: 11px;

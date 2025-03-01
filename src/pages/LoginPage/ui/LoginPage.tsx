@@ -2,9 +2,8 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import styled from 'styled-components';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useAppDispatch } from '@/shared';
+import { useAppDispatch, userDataSchema } from '@/shared';
 import { login } from '@/entities';
-import { userDataSchema } from '@/shared/validation';
 import { useTranslation } from 'react-i18next';
 import { useEffect } from 'react';
 
@@ -57,7 +56,8 @@ export const LoginPage = () => {
 };
 
 const Form = styled.form`
-  width: 459px;
+  max-width: 459px;
+  width: 100%;
   border-radius: 16px;
   border: 1px solid var(--border-color);
   background-color: var(--accent-bg);
@@ -69,6 +69,7 @@ const Form = styled.form`
   left: 50%;
   transform: translate(-50%, -50%);
   padding: 20px;
+  margin: 0 10px;
 `;
 const FormHeader = styled.h2`
   font-size: 22px;
