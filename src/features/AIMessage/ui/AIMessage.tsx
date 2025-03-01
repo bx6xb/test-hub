@@ -1,10 +1,13 @@
-import { AI_MODELS, AIModelsValues, CopyText, Nullable } from '@/shared';
+import { AI_MODELS, AIModelsValues, connectSSE, CopyText, Nullable } from '@/shared';
 import { marked } from 'marked';
+import { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import { GptResponse } from '../model';
 
 type Props = {
   messageText: Nullable<string>;
   time: string;
+  chatId: string;
   aiVersion?: string;
   aiId?: AIModelsValues;
 };
@@ -12,10 +15,32 @@ type Props = {
 export const AIMessage = ({
   messageText,
   time,
+  chatId,
   aiId = 'gpt',
   aiVersion = 'gpt-4-1106-preview',
 }: Props) => {
-  const text = messageText || '';
+  const [sseMessageText, setSseMessageText] = useState('');
+
+  const getResponse = (data: GptResponse) => {
+    const message = data.data.message.content;
+
+    if (message) {
+      setSseMessageText(message);
+    }
+  };
+
+  useEffect(() => {
+    if (!messageText) {
+      const abortSSE = connectSSE<GptResponse>(`chat/${chatId}/stream`, getResponse);
+
+      return () => {
+        console.log('SSE closed');
+        abortSSE();
+      };
+    }
+  }, []);
+
+  const text = messageText || sseMessageText;
 
   return (
     <AIMessageContainer>

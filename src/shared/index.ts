@@ -9,3 +9,4 @@ export * from './lib';
 export * from './middleware';
 export * from './validation';
 export * from './config';
+export * from './connection';

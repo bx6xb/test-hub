@@ -49,6 +49,7 @@ export const Messages = () => {
                   ? {
                       aiId: model?.owned_by as AIModelsValues,
                       aiVersion: model?.id,
+                      chatId,
                     }
                   : {})}
               />
