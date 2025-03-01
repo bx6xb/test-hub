@@ -4,7 +4,6 @@ import { Loader, useAppSelector, useFetchChatsQuery } from '@/shared';
 import { memo } from 'react';
 
 export const Chats = memo(() => {
-  console.log('Chats');
   const searchTerm = useAppSelector(state => state.appSlice.searchTerm);
 
   const { data, isLoading } = useFetchChatsQuery({});

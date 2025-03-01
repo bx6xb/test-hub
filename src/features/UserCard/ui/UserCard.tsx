@@ -4,7 +4,6 @@ import { memo } from 'react';
 import styled from 'styled-components';
 
 export const UserCard = memo(() => {
-  console.log('UserCard');
   const username = useAppSelector(state => state.authSlice.username);
 
   const dispatch = useAppDispatch();

@@ -14,7 +14,7 @@ export const Preloader = () => {
 
   return (
     <PreloaderContainer $isHidden={!isAppLoading}>
-      <Image src="/images/ChatGPT.svg" alt="preloader" />
+      <Image src="/images/gpt.svg" alt="preloader" />
     </PreloaderContainer>
   );
 };

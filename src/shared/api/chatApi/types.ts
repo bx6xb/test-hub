@@ -39,7 +39,7 @@ export type FetchChatsQueryParams = {
 // set chat name or model
 export type SetChatNameOrModelParams = {
   chatId: string;
-  name: string;
+  name?: string;
   highlight?: string;
   modelId?: string;
   modelFunctionId?: string;

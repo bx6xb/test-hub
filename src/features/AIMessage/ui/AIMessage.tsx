@@ -19,7 +19,7 @@ export const AIMessage = ({ messageText, time }: Props) => {
       </AIModel>
 
       <Message>
-        <AIAvatar src="/images/ChatGPT.svg" alt="chat gpt" />
+        <AIAvatar src="/images/gpt.svg" alt="chat gpt" />
         <MessageText dangerouslySetInnerHTML={{ __html: marked(messageText) }} />
       </Message>
 

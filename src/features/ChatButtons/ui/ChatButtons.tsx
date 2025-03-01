@@ -5,7 +5,6 @@ import { useTranslation } from 'react-i18next';
 import { memo } from 'react';
 
 export const ChatButtons = memo(() => {
-  console.log('ChatButtons');
   const [addChat] = useAddChatMutation();
   const { setChatId } = useGetChatId();
   const { t } = useTranslation();

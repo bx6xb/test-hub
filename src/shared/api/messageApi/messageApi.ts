@@ -16,10 +16,7 @@ export const messageApi = baseApi.injectEndpoints({
           page,
         },
       }),
-      providesTags: result => {
-        console.log('Message data loaded:', result);
-        return ['message'];
-      },
+      providesTags: ['message'],
     }),
     sendMessage: builder.mutation<SendMessageResponse, SendMessageBody>({
       query: body => ({
@@ -27,10 +24,7 @@ export const messageApi = baseApi.injectEndpoints({
         body,
         method: 'POST',
       }),
-      invalidatesTags: result => {
-        console.log('Message data loaded:', result);
-        return ['message'];
-      },
+      invalidatesTags: ['message'],
     }),
     getChatStream: builder.query<string[], GetChatStreamParams>({
       query: ({ chatId }) => `chat/${chatId}/stream`,

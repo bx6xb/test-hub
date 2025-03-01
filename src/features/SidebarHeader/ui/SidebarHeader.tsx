@@ -3,7 +3,6 @@ import { LangSwitcher } from './LangSwitcher';
 import { memo } from 'react';
 
 export const SidebarHeader = memo(() => {
-  console.log('SidebarHeader');
   return (
     <LogoAndLang>
       <img src="/images/logo.svg" alt="logo" width={104} height={30} />

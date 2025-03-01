@@ -26,5 +26,6 @@
 
   "file": "rtkQueryErrorLogger.ts",
   "rtkQueryErrorLogger_server_error": "Server error",
-  "rtkQueryErrorLogger_network_error": "Network error"
+  "rtkQueryErrorLogger_network_error": "Network error",
+  "rtkQueryErrorLogger_model_error": "Model not found"
 }
