@@ -44,42 +44,48 @@ export const AIMessage = ({
 
   return (
     <AIMessageContainer>
-      <AIModel>
-        {AI_MODELS[aiId]}
-        <AIVersion>{aiVersion}</AIVersion>
-      </AIModel>
+      <AIAvatar src={`/images/${aiId}.svg`} alt={`${aiId} logo`} />
 
-      <Message>
-        <AIAvatar src={`/images/${aiId}.svg`} alt={`${aiId} logo`} />
+      <MessageContent>
+        <AIModel>
+          {AI_MODELS[aiId]}
+          <AIVersion>{aiVersion}</AIVersion>
+        </AIModel>
+
         <MessageText dangerouslySetInnerHTML={{ __html: marked(text) }} />
-      </Message>
 
-      <CopyAndTime>
-        <Copy>
-          -223 CAPS
+        <CopyAndTime>
           <CopyText text={text} />
-        </Copy>
 
-        {time}
-      </CopyAndTime>
+          {time}
+        </CopyAndTime>
+      </MessageContent>
     </AIMessageContainer>
   );
 };
 
 const AIMessageContainer = styled.div`
-  max-width: 65%;
+  max-width: 80%;
   display: flex;
-  flex-direction: column;
-  gap: 8px;
+  gap: 16px;
+`;
+const AIAvatar = styled.img`
+  width: 40px;
+  height: 40px;
+  margin-top: 34px;
 
   @media (max-width: 768px) {
-    max-width: 100%;
+    width: 35px;
+    height: 35px;
   }
 `;
-const AIModel = styled.div`
-  width: 294px;
+const MessageContent = styled.div`
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  gap: 16px;
+`;
+const AIModel = styled.div`
+  display: flex;
   align-items: center;
   gap: 10px;
   font-size: 16px;
@@ -95,42 +101,18 @@ const AIVersion = styled.div`
   font-size: 14px;
   font-weight: 500;
 `;
-const Message = styled.div`
-  display: flex;
-  gap: 16px;
-`;
-const AIAvatar = styled.img`
-  width: 40px;
-  height: 40px;
-
-  @media (max-width: 768px) {
-    width: 35px;
-    height: 35px;
-  }
-`;
 const MessageText = styled.p`
   font-size: 18px;
   font-weight: 400;
-  margin-top: 8px;
 
   @media (max-width: 768px) {
     font-size: 14px;
   }
 `;
 const CopyAndTime = styled.div`
-  width: 294px;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
-  gap: 98px;
   font-size: 12px;
-  font-weight: 400;
-`;
-const Copy = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  color: #9ca3af;
-  font-size: 16px;
   font-weight: 400;
 `;
