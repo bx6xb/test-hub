@@ -1,3 +1,5 @@
+import { Nullable } from '@/shared';
+
 // chat types
 export type PartialChat = {
   id: string;
@@ -10,7 +12,7 @@ export type PartialChat = {
   total_caps: number;
 };
 export type ChatType = {
-  model_function_id: null;
+  model_function_id: Nullable<string>;
   initial: boolean;
   platform: string;
   order: number;

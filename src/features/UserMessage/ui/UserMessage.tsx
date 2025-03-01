@@ -1,19 +1,21 @@
-import { CopyText } from '@/shared';
+import { CopyText, Nullable } from '@/shared';
 import styled from 'styled-components';
 
 type Props = {
-  messageText: string;
+  messageText: Nullable<string>;
   time: string;
 };
 
 export const UserMessage = ({ messageText, time }: Props) => {
+  const text = messageText || '';
+
   return (
     <UserMessageContainer>
-      <CopyText text={messageText} />
+      <CopyText text={text} />
 
       <Message>
         <Time>{time}</Time>
-        <MessageText>{messageText}</MessageText>
+        <MessageText>{text}</MessageText>
       </Message>
 
       <UserAvatar src="/images/user.svg" alt="user avatar" />

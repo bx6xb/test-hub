@@ -1,31 +1,26 @@
 import {
+  AI_MODELS,
   Arrow,
   Dropdown,
-  useFetchChatsQuery,
-  useGetChatId,
+  useGetChatInfo,
   useSetChatNameOrModelMutation,
 } from '@/shared';
 import { useState } from 'react';
 import styled from 'styled-components';
-import { AI_MODELS, AIModels } from '../model';
 
 export const AIModelSelect = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [setModel, { isLoading }] = useSetChatNameOrModelMutation();
-  const { data } = useFetchChatsQuery({});
-  const { chatId } = useGetChatId();
+  const chat = useGetChatInfo();
 
-  let modelId: AIModels = 'gpt';
-  if (data) {
-    const currentChat = data.data.find(chat => chat.id === chatId);
-
-    if (currentChat) {
-      modelId = currentChat.model_id as AIModels;
-    }
+  if (!chat) {
+    return null;
   }
 
+  const { id, model_id, aiName } = chat;
+
   const onOptionChange = (modelId: string) => {
-    setModel({ chatId, modelId });
+    setModel({ chatId: id, modelId });
   };
 
   const mappedAIModels = Object.entries(AI_MODELS).map(([id, label]) => ({
@@ -43,13 +38,13 @@ export const AIModelSelect = () => {
       top="-150px"
       options={mappedAIModels}
       onOptionChange={onOptionChange}
-      selected={modelId}
+      selected={model_id}
       getModalState={setIsModalOpen}
       disabled={isLoading}
     >
       <Select>
-        <img src={`/images/${modelId}.svg`} alt={modelId + ' logo'} />
-        {AI_MODELS[modelId]}
+        <img src={`/images/${model_id}.svg`} alt={model_id + ' logo'} />
+        {aiName}
         <Arrow isArrowUp={isModalOpen} />
       </Select>
     </Dropdown>

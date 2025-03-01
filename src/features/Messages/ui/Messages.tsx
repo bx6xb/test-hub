@@ -1,6 +1,7 @@
 import { AIMessage, UserMessage } from '@/features';
 import styled from 'styled-components';
 import {
+  AIModelsValues,
   getTimeFromIsoDate,
   Loader,
   useGetChatId,
@@ -36,23 +37,28 @@ export const Messages = () => {
       {isLoading ? (
         <Loader loaderSize={25} />
       ) : (
-        messages &&
-        [...messages.data].reverse().map(({ role, content, created_at, id }) => {
-          const Component = role === 'assistant' ? AIMessage : UserMessage;
+        messages?.data
+          .slice()
+          .reverse()
+          .map(({ role, content, created_at, id, model }) => {
+            const Component = role === 'user' ? UserMessage : AIMessage;
+            const time = getTimeFromIsoDate(created_at);
 
-          return (
-            <Component key={id} messageText={content || ''} time={getTimeFromIsoDate(created_at)} />
-          );
-        })
+            return (
+              <Component
+                key={id}
+                messageText={content}
+                time={time}
+                {...(role === 'assistant'
+                  ? {
+                      aiId: model?.owned_by as AIModelsValues,
+                      aiVersion: model?.id,
+                    }
+                  : {})}
+              />
+            );
+          })
       )}
-      {/* {messages &&
-        [...messages.data].reverse().map(({ role, content, created_at, id }) => {
-          const Component = role === 'assistant' ? AIMessage : UserMessage
-
-          return (
-            <Component key={id} messageText={content || ''} time={getTimeFromIsoDate(created_at)} />
-          )
-        })} */}
       <div ref={messagesEndRef} />
     </MessagesContainer>
   );

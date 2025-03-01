@@ -1,32 +1,38 @@
-import { CopyText } from '@/shared';
+import { AI_MODELS, AIModelsValues, CopyText, Nullable } from '@/shared';
 import { marked } from 'marked';
 import styled from 'styled-components';
 
 type Props = {
-  messageText: string;
+  messageText: Nullable<string>;
   time: string;
+  aiVersion?: string;
+  aiId?: AIModelsValues;
 };
 
-export const AIMessage = ({ messageText, time }: Props) => {
-  const aimodel = 'ChatGPT';
-  const aiversion = 'gpt-3.5-turbo';
+export const AIMessage = ({
+  messageText,
+  time,
+  aiId = 'gpt',
+  aiVersion = 'gpt-4-1106-preview',
+}: Props) => {
+  const text = messageText || '';
 
   return (
     <AIMessageContainer>
       <AIModel>
-        {aimodel}
-        <AIVersion>{aiversion}</AIVersion>
+        {AI_MODELS[aiId]}
+        <AIVersion>{aiVersion}</AIVersion>
       </AIModel>
 
       <Message>
-        <AIAvatar src="/images/gpt.svg" alt="chat gpt" />
-        <MessageText dangerouslySetInnerHTML={{ __html: marked(messageText) }} />
+        <AIAvatar src={`/images/${aiId}.svg`} alt={`${aiId} logo`} />
+        <MessageText dangerouslySetInnerHTML={{ __html: marked(text) }} />
       </Message>
 
       <CopyAndTime>
         <Copy>
           -223 CAPS
-          <CopyText text={messageText} />
+          <CopyText text={text} />
         </Copy>
 
         {time}
