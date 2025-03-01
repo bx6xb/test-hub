@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import { ChatType, useFetchChatsQuery } from '../api';
 import { AIModelsValues } from '../types';
 import { AI_MODELS } from '../variables';
@@ -7,11 +8,15 @@ export const useGetChatInfo = () => {
   const { data } = useFetchChatsQuery({});
   const { chatId } = useGetChatId();
 
-  let currentChat: ChatType | undefined;
+  const currentChat = useMemo(() => {
+    let chat: ChatType | undefined;
 
-  if (data) {
-    currentChat = data.data.find(chat => chat.id === chatId);
-  }
+    if (data) {
+      chat = data.data.find(chat => chat.id === chatId);
+    }
+
+    return chat;
+  }, [chatId]);
 
   return currentChat
     ? {
