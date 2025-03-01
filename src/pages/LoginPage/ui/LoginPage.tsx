@@ -31,30 +31,43 @@ export const LoginPage = () => {
   };
 
   return (
-    <Form onSubmit={handleSubmit(onSubmitHandler)}>
-      <FormHeader>{t('LoginPage_login')}</FormHeader>
+    <FormContainer>
+      <Form onSubmit={handleSubmit(onSubmitHandler)}>
+        <FormHeader>{t('LoginPage_login')}</FormHeader>
 
-      <Label>
-        E-Mail
-        <Input type="email" placeholder={t('LoginPage_email_placeholder')} {...register('email')} />
-      </Label>
-      {!!errors.email && <Error>{t('LoginPage_incorrect_email_error')}</Error>}
+        <Label>
+          E-Mail
+          <Input
+            type="email"
+            placeholder={t('LoginPage_email_placeholder')}
+            {...register('email')}
+          />
+        </Label>
+        {!!errors.email && <Error>{t('LoginPage_incorrect_email_error')}</Error>}
 
-      <Label>
-        {t('LoginPage_password')}
-        <Input
-          type="password"
-          placeholder={t('LoginPage_password_placeholder')}
-          {...register('password')}
-        />
-      </Label>
-      {!!errors.password && <Error>{t('LoginPage_password_length_error')}</Error>}
+        <Label>
+          {t('LoginPage_password')}
+          <Input
+            type="password"
+            placeholder={t('LoginPage_password_placeholder')}
+            {...register('password')}
+          />
+        </Label>
+        {!!errors.password && <Error>{t('LoginPage_password_length_error')}</Error>}
 
-      <Button>{t('LoginPage_submit')}</Button>
-    </Form>
+        <Button>{t('LoginPage_submit')}</Button>
+      </Form>
+    </FormContainer>
   );
 };
 
+const FormContainer = styled.div`
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 const Form = styled.form`
   max-width: 459px;
   width: 100%;
@@ -64,10 +77,6 @@ const Form = styled.form`
   display: flex;
   flex-direction: column;
   gap: 16px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   padding: 20px;
   margin: 0 10px;
 `;
