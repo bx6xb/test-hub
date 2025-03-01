@@ -37,23 +37,25 @@ export const Messages = () => {
           .slice()
           .reverse()
           .map(({ role, content, created_at, id, model }) => {
-            const Component = role === 'user' ? UserMessage : AIMessage;
             const time = getTimeFromIsoDate(created_at);
+            const generalProps = {
+              messageText: content,
+              time,
+            };
 
-            return (
-              <Component
-                key={id}
-                messageText={content}
-                time={time}
-                {...(role === 'assistant'
-                  ? {
-                      aiId: model?.owned_by as AIModelsValues,
-                      aiVersion: model?.id,
-                      chatId,
-                    }
-                  : {})}
-              />
-            );
+            if (role === 'assistant') {
+              return (
+                <AIMessage
+                  key={id}
+                  {...generalProps}
+                  chatId={chatId}
+                  aiId={model?.owned_by as AIModelsValues}
+                  aiVersion={model?.id}
+                />
+              );
+            } else {
+              return <UserMessage key={id} {...generalProps} />;
+            }
           })
       )}
       <div ref={messagesEndRef} />
