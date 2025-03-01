@@ -5,7 +5,6 @@ import {
   getTimeFromIsoDate,
   Loader,
   useGetChatId,
-  // useGetChatStreamQuery,
   useLazyFetchMessagesQuery,
 } from '@/shared';
 import { useEffect, useRef } from 'react';
@@ -14,7 +13,6 @@ export const Messages = () => {
   const { chatId } = useGetChatId();
 
   const [fetchMessages, { data: messages, isLoading }] = useLazyFetchMessagesQuery();
-  // const { data: streamMessages = [] } = useGetChatStreamQuery({ chatId }, { pollingInterval: 0 })
 
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
@@ -29,8 +27,6 @@ export const Messages = () => {
       messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
     }
   }, [messages]);
-
-  // console.log(streamMessages)
 
   return (
     <MessagesContainer>

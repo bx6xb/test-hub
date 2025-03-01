@@ -174,11 +174,6 @@ export type FetchMessagesData = {
   page?: number;
 };
 
-// get chat stream
-export type GetChatStreamParams = {
-  chatId: string;
-};
-
 // send message
 export type SendMessageResponse = {
   type: string;
