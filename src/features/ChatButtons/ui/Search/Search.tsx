@@ -34,12 +34,7 @@ export const Search = () => {
         )}
       </SearchButton>
 
-      <Input
-        ref={inputRef}
-        value={searchTerm}
-        onChange={onInputChange}
-        $isSearching={isSearching}
-      />
+      {isSearching && <Input ref={inputRef} value={searchTerm} onChange={onInputChange} />}
     </SearchContainer>
   );
 };
@@ -53,14 +48,11 @@ const SearchContainer = styled.div<{ $isSearching: boolean }>`
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  overflow: hidden;
 
   ${({ $isSearching }) =>
     $isSearching &&
     css`
       flex: 1;
-      min-width: 150px;
-      max-width: 300px;
     `}
 `;
 const SearchButton = styled.button`
@@ -73,15 +65,9 @@ const SearchButton = styled.button`
   color: var(--border-color);
   font-weight: 600;
 `;
-const Input = styled.input<{ $isSearching: boolean }>`
-  min-width: 0;
+const Input = styled.input`
   all: unset;
+  min-width: 0;
   flex: 1;
   margin-right: 11px;
-
-  ${({ $isSearching }) =>
-    !$isSearching &&
-    css`
-      pointer-events: none;
-    `}
 `;
