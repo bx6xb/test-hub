@@ -27,7 +27,7 @@ export const Sidebar = () => {
         <UserCard />
       </SidebarContainer>
 
-      <Hamburger onClick={toggleShowSidebarHandler}>
+      <Hamburger onClick={toggleShowSidebarHandler} $closeHambIcon={showSidebar}>
         <div />
         <div />
         <div />
@@ -72,7 +72,7 @@ const Line = styled.hr`
   border: 1px solid var(--border-color);
   margin-bottom: 16px;
 `;
-const Hamburger = styled.div`
+const Hamburger = styled.div<{ $closeHambIcon: boolean }>`
   width: 45px;
   height: 45px;
   background-color: var(--secondary-color);
@@ -88,11 +88,31 @@ const Hamburger = styled.div`
   gap: 8px;
   padding: 0 6px;
 
+  ${({ $closeHambIcon }) =>
+    $closeHambIcon &&
+    css`
+      :first-child {
+        display: none;
+      }
+      :nth-child(2) {
+        transform: rotate(45deg);
+      }
+      :nth-child(3) {
+        transform: rotate(-45deg);
+      }
+
+      div {
+        position: absolute;
+        right: 0;
+      }
+    `}
+
   div {
     width: 100%;
     height: 3px;
     background-color: var(--white-color);
     border-radius: 2px;
+    transition: 0.2s;
   }
 
   @media (min-width: 769px) {
