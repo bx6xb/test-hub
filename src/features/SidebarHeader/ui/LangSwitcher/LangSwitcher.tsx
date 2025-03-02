@@ -1,12 +1,11 @@
 import { Arrow, Dropdown } from '@/shared';
 import { useEffect, useState } from 'react';
-import styled from 'styled-components';
 import { LANGS } from '../../model';
 import { useTranslation } from 'react-i18next';
+import { CurrentLang, LangSwitcherContainer } from '../../styles';
 
 export const LangSwitcher = () => {
   const { i18n } = useTranslation();
-
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedLang, setSelectedLang] = useState(i18n.language);
 
@@ -34,15 +33,3 @@ export const LangSwitcher = () => {
     </Dropdown>
   );
 };
-
-const LangSwitcherContainer = styled.div`
-  display: flex;
-  gap: 6px;
-  align-content: center;
-  cursor: pointer;
-  user-select: none;
-`;
-const CurrentLang = styled.span`
-  font-size: 16px;
-  font-weight: 600;
-`;

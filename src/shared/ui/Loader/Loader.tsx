@@ -1,5 +1,5 @@
 import { PulseLoader } from 'react-spinners';
-import styled from 'styled-components';
+import { LoaderContainer } from './styles';
 
 type Props = {
   loaderSize?: number;
@@ -12,11 +12,3 @@ export const Loader = ({ loaderSize }: Props) => {
     </LoaderContainer>
   );
 };
-
-const LoaderContainer = styled.div`
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;

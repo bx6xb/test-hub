@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react';
-import styled, { css, keyframes } from 'styled-components';
-import { Position, Props } from './types';
+import { Props } from './types';
+import { DropdownContainer, DropdownModal, DropdownOption, DropdownWrapper } from './styles';
 
 export const Dropdown = ({
   options,
@@ -54,58 +54,3 @@ export const Dropdown = ({
     </DropdownContainer>
   );
 };
-
-// animations
-const fadeIn = keyframes`
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-`;
-
-// styles
-const DropdownContainer = styled.div`
-  position: relative;
-`;
-const DropdownWrapper = styled.div<Position & { $isOpen: boolean }>`
-  position: absolute;
-  top: ${({ top }) => top || 'auto'};
-  right: ${({ right }) => right || 'auto'};
-  bottom: ${({ bottom }) => bottom || 'auto'};
-  left: ${({ left }) => left || 'auto'};
-  z-index: 1;
-
-  ${({ $isOpen }) =>
-    $isOpen &&
-    css`
-      animation: ${fadeIn} 0.3s ease-in-out;
-    `}
-  pointer-events: ${({ $isOpen }) => ($isOpen ? 'auto' : 'none')};
-`;
-const DropdownModal = styled.div`
-  display: flex;
-  flex-direction: column;
-  background-color: var(--secondary-color);
-  border: 1px solid var(--border-color);
-  border-radius: 8px;
-  padding: 8px;
-  outline: none;
-`;
-const DropdownOption = styled.div<{ $isSelected: boolean }>`
-  display: flex;
-  align-items: center;
-  border-radius: 8px;
-  padding: 12px;
-  transition: 0.2s;
-  cursor: pointer;
-
-  ${({ $isSelected }) =>
-    $isSelected &&
-    css`
-      background-color: var(--border-color);
-    `}
-`;

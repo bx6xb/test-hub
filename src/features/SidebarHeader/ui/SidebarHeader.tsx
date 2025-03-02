@@ -1,6 +1,6 @@
-import styled from 'styled-components';
 import { LangSwitcher } from './LangSwitcher';
 import { memo } from 'react';
+import { LogoAndLang } from '../styles';
 
 export const SidebarHeader = memo(() => {
   return (
@@ -11,16 +11,3 @@ export const SidebarHeader = memo(() => {
     </LogoAndLang>
   );
 });
-
-const LogoAndLang = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
-
-  @media (max-width: 768px) {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 15px;
-  }
-`;

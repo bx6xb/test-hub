@@ -7,7 +7,7 @@ import {
   useSetChatNameOrModelMutation,
 } from '@/shared';
 import { useState } from 'react';
-import styled, { css } from 'styled-components';
+import { Model, Select } from '../styles';
 
 export const AIModelSelect = () => {
   const isChatDisabled = useAppSelector(state => state.appSlice.isChatDisabled);
@@ -51,31 +51,3 @@ export const AIModelSelect = () => {
     </Dropdown>
   );
 };
-
-const Select = styled.div<{ $disabled: boolean }>`
-  min-width: 147px;
-  height: 40px;
-  padding: 10px 16px;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 10px;
-  border: 1px solid var(--border-color);
-  border-radius: 10px;
-  cursor: pointer;
-  user-select: none;
-
-  ${({ $disabled }) =>
-    $disabled &&
-    css`
-      pointer-events: none;
-      filter: brightness(0.7);
-    `}
-`;
-const Model = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 15px;
-  font-weight: 500;
-`;

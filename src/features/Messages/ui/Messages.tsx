@@ -1,5 +1,4 @@
 import { AIMessage, UserMessage } from '@/features';
-import styled from 'styled-components';
 import {
   AIModelsValues,
   getTimeFromIsoDate,
@@ -8,12 +7,11 @@ import {
   useLazyFetchMessagesQuery,
 } from '@/shared';
 import { useEffect, useRef } from 'react';
+import { MessagesContainer } from '../styles';
 
 export const Messages = () => {
   const { chatId } = useGetChatId();
-
   const [fetchMessages, { data: messages, isLoading }] = useLazyFetchMessagesQuery();
-
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -64,12 +62,3 @@ export const Messages = () => {
     </MessagesContainer>
   );
 };
-
-const MessagesContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  flex: 1;
-  overflow-y: auto;
-  padding-right: 10px;
-`;

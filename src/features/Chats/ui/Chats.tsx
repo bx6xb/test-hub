@@ -1,7 +1,7 @@
-import styled from 'styled-components';
 import { Chat } from './Chat';
 import { Loader, useAppSelector, useFetchChatsQuery } from '@/shared';
 import { memo } from 'react';
+import { ChatsContainer } from '../styles';
 
 export const Chats = memo(() => {
   const searchTerm = useAppSelector(state => state.appSlice.searchTerm);
@@ -17,13 +17,3 @@ export const Chats = memo(() => {
     </ChatsContainer>
   );
 });
-
-const ChatsContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  flex: 1;
-  margin-bottom: 16px;
-  overflow-y: auto;
-  padding: 1px 0;
-`;
