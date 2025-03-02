@@ -1,50 +1,68 @@
-# React + TypeScript + Vite
+# 🌍 [🚀 Деплой Test Hub AI](https://test-hub-taupe.vercel.app)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Test Hub AI — это клиент для **ChatGPT** и **MidJourney**, объединяющий возможности общения с нейросетями в одном удобном интерфейсе.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 📖 Описание проекта
 
-## Expanding the ESLint configuration
+Test Hub AI — это удобный менеджер для работы с **ChatGPT** и **MidJourney**, позволяющий:  
+✅ Общаться с **ChatGPT** в реальном времени  
+✅ Создавать и управлять **изображениями через MidJourney**  
+✅ Работать с интерфейсом, переведённым на **несколько языков**  
+✅ Поддерживает **валидацию данных и формы**
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+---
 
-- Configure the top-level `parserOptions` property like this:
+## 🚀 Быстрый старт
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-});
+### 1️⃣ Установка зависимостей
+
+```sh
+yarn install
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+### 2️⃣ Запуск в режиме разработки
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react';
+```sh
+yarn dev
+```
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-});
+### 3️⃣ Сборка для продакшена
+
+```sh
+yarn build
+```
+
+4️⃣ Запуск продакшена локально
+
+```sh
+yarn preview
+```
+
+## 🛠️ Используемые технологии
+
+- **⚛ React** — UI-библиотека
+- **🟦 TypeScript** — строгая типизация
+- **💅 Styled-components** — стилизация компонентов
+- **🔄 RTK Query** — работа с API
+- **🌍 i18n** — мультиязычность
+- **🎨 Prettier** — автоматическое форматирование кода
+- **⚡ Vite** — быстрый сборщик проекта
+- **✅ Zod** — валидация данных
+- **📄 React-hook-form** — управление формами
+- **📂 FSD (Feature-Sliced Design)** — архитектура
+
+---
+
+## 📂 Структура проекта (FSD)
+
+```bash
+📦 src
+ ┣ 📂 app         # Инициализация приложения
+ ┣ 📂 entities    # Основные сущности проекта
+ ┣ 📂 features    # Логические блоки приложения
+ ┣ 📂 pages       # Страницы приложения
+ ┣ 📂 shared      # Переиспользуемые компоненты, утилиты
+ ┗ 📂 widgets     # Крупные UI-блоки
 ```
