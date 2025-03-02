@@ -28,9 +28,9 @@ export const Sidebar = () => {
       </SidebarContainer>
 
       <Hamburger onClick={toggleShowSidebarHandler}>
-        <span />
-        <span />
-        <span />
+        <div />
+        <div />
+        <div />
       </Hamburger>
     </>
   );
@@ -73,24 +73,26 @@ const Line = styled.hr`
   margin-bottom: 16px;
 `;
 const Hamburger = styled.div`
-  width: 50px;
-  height: 50px;
+  width: 45px;
+  height: 45px;
   background-color: var(--secondary-color);
-  border: 2px solid var(--primary-color);
+  border: 3px solid var(--primary-color);
   border-radius: 5px;
   position: fixed;
   z-index: 2;
-  top: 50px;
-  right: 50px;
+  top: 40px;
+  right: 40px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  padding: 10px;
+  justify-content: center;
+  gap: 8px;
+  padding: 0 6px;
 
-  span {
-    height: 2px;
+  div {
     width: 100%;
+    height: 3px;
     background-color: var(--white-color);
+    border-radius: 2px;
   }
 
   @media (min-width: 769px) {
