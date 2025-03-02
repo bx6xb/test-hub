@@ -6,7 +6,6 @@ export const Dropdown = ({
   options,
   children,
   selected,
-  disabled = false,
   getModalState,
   onOptionChange,
   ...position
@@ -39,12 +38,7 @@ export const Dropdown = ({
 
       <DropdownWrapper $isOpen={isOpen} {...position}>
         {isOpen && (
-          <DropdownModal
-            ref={dropdownModalRef}
-            onBlur={onModalBlur}
-            tabIndex={-1}
-            $disabled={disabled}
-          >
+          <DropdownModal ref={dropdownModalRef} onBlur={onModalBlur} tabIndex={-1}>
             {options.map(({ id, label }) => (
               <DropdownOption
                 key={id}
@@ -92,7 +86,7 @@ const DropdownWrapper = styled.div<Position & { $isOpen: boolean }>`
     `}
   pointer-events: ${({ $isOpen }) => ($isOpen ? 'auto' : 'none')};
 `;
-const DropdownModal = styled.div<{ $disabled: boolean }>`
+const DropdownModal = styled.div`
   display: flex;
   flex-direction: column;
   background-color: var(--secondary-color);
@@ -100,13 +94,6 @@ const DropdownModal = styled.div<{ $disabled: boolean }>`
   border-radius: 8px;
   padding: 8px;
   outline: none;
-
-  ${({ $disabled }) =>
-    $disabled &&
-    css`
-      pointer-events: none;
-      filter: brightness(0.7);
-    `}
 `;
 const DropdownOption = styled.div<{ $isSelected: boolean }>`
   display: flex;

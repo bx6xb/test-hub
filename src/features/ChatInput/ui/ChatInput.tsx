@@ -1,13 +1,15 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { inputSchema, useGetChatId, useSendMessageMutation } from '@/shared';
+import { inputSchema, useAppSelector, useGetChatId, useSendMessageMutation } from '@/shared';
 import { useTranslation } from 'react-i18next';
 
 type Inputs = z.infer<typeof inputSchema>;
 
 export const ChatInput = () => {
+  const isChatDisabled = useAppSelector(state => state.appSlice.isChatDisabled);
+
   const { chatId } = useGetChatId();
 
   const { t } = useTranslation();
@@ -19,6 +21,7 @@ export const ChatInput = () => {
     defaultValues: {
       string: '',
     },
+    disabled: isChatDisabled,
   });
 
   const onFormSubmit: SubmitHandler<Inputs> = async ({ string }) => {
@@ -31,7 +34,7 @@ export const ChatInput = () => {
   };
 
   return (
-    <ChatInputContainer onSubmit={handleSubmit(onFormSubmit)}>
+    <ChatInputContainer onSubmit={handleSubmit(onFormSubmit)} $isFormDisabled={isChatDisabled}>
       <Input type="text" placeholder={t('ChatInput_input_placeholder')} {...register('string')} />
       <SendMessage type="submit">
         <img src="/images/send.svg" alt="send message" />
@@ -40,9 +43,16 @@ export const ChatInput = () => {
   );
 };
 
-const ChatInputContainer = styled.form`
+const ChatInputContainer = styled.form<{ $isFormDisabled: boolean }>`
   width: 100%;
   position: relative;
+
+  ${({ $isFormDisabled }) =>
+    $isFormDisabled &&
+    css`
+      pointer-events: none;
+      filter: brightness(0.6);
+    `}
 `;
 const Input = styled.input`
   width: 100%;

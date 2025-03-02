@@ -2,13 +2,15 @@ import {
   AI_MODELS,
   Arrow,
   Dropdown,
+  useAppSelector,
   useGetChatInfo,
   useSetChatNameOrModelMutation,
 } from '@/shared';
 import { useState } from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const AIModelSelect = () => {
+  const isChatDisabled = useAppSelector(state => state.appSlice.isChatDisabled);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [setModel, { isLoading }] = useSetChatNameOrModelMutation();
   const chat = useGetChatInfo();
@@ -40,9 +42,8 @@ export const AIModelSelect = () => {
       onOptionChange={onOptionChange}
       selected={model_id}
       getModalState={setIsModalOpen}
-      disabled={isLoading}
     >
-      <Select>
+      <Select $disabled={isLoading || isChatDisabled}>
         <img src={`/images/${model_id}.svg`} alt={model_id + ' logo'} />
         {aiName}
         <Arrow isArrowUp={isModalOpen} />
@@ -51,7 +52,7 @@ export const AIModelSelect = () => {
   );
 };
 
-const Select = styled.div`
+const Select = styled.div<{ $disabled: boolean }>`
   min-width: 147px;
   height: 40px;
   padding: 10px 16px;
@@ -63,6 +64,13 @@ const Select = styled.div`
   border-radius: 10px;
   cursor: pointer;
   user-select: none;
+
+  ${({ $disabled }) =>
+    $disabled &&
+    css`
+      pointer-events: none;
+      filter: brightness(0.7);
+    `}
 `;
 const Model = styled.div`
   display: flex;

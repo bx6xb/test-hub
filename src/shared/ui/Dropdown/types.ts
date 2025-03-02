@@ -16,7 +16,6 @@ export type Props = {
   options: Option[];
   children: ReactNode;
   selected: string;
-  disabled?: boolean;
   getModalState?: (isOpen: boolean) => void;
   onOptionChange(index: string): void;
 } & Position;

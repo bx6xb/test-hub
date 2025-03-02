@@ -1,9 +1,11 @@
-import { Nullable } from '@/shared/types';
+import { Nullable } from '@/shared';
+
+export type Role = 'user' | 'assistant';
 
 // general type
 export type GeneralMessageResponse = {
   id: string;
-  role: 'user' | 'assistant';
+  role: Role;
   status: string;
   tokens: number;
   action_type: Nullable<string>;

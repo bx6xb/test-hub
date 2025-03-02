@@ -1,6 +1,14 @@
+import { JobError } from '@/features';
 import { API_KEY, API_URL } from '../variables';
 
-export function connectSSE<T>(uri: string, getResponse: (response: T) => void) {
+type Args<T> = {
+  uri: string;
+  getResponse: (response: T) => void;
+  onError?: (errorMessage: string) => void;
+  onAbort?: () => void;
+};
+
+export function connectSSE<T>({ uri, getResponse, onError, onAbort }: Args<T>) {
   const controller = new AbortController();
   const { signal } = controller;
 
@@ -41,6 +49,12 @@ export function connectSSE<T>(uri: string, getResponse: (response: T) => void) {
             } else if (data.name === 'JOB_DONE') {
               controller.abort();
               break;
+            } else if (data.name === 'JOB_ERROR') {
+              const typedData = data as JobError;
+              onError && onError(typedData.data.job.error);
+
+              controller.abort();
+              break;
             }
           } catch (error) {
             console.error('JSON parse error:', error);
@@ -49,6 +63,7 @@ export function connectSSE<T>(uri: string, getResponse: (response: T) => void) {
       }
     } catch (error) {
       if (signal.aborted) {
+        onAbort && onAbort();
         console.log('SSE closed');
       } else {
         console.error('SSE error:', error);

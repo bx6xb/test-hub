@@ -5,6 +5,7 @@ import { AlertType, AppState } from './types';
 const initialState: AppState = {
   searchTerm: '',
   alerts: [],
+  isChatDisabled: false,
 };
 
 export const appSlice = createSlice({
@@ -20,7 +21,10 @@ export const appSlice = createSlice({
     removeAlert(state, action: PayloadAction<string>) {
       state.alerts = state.alerts.filter(alert => alert.id !== action.payload);
     },
+    setIsChatDisabled(state, action: PayloadAction<boolean>) {
+      state.isChatDisabled = action.payload;
+    },
   },
 });
 
-export const { setSearchTerm, addAlert, removeAlert } = appSlice.actions;
+export const { setSearchTerm, addAlert, removeAlert, setIsChatDisabled } = appSlice.actions;
