@@ -5,8 +5,7 @@ import { useAppDispatch, inputSchema } from '@/shared';
 import { addAlert } from '@/entities';
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Form } from 'react-router-dom';
-import { Input } from './styles';
+import { Form, Input } from './styles';
 
 type Inputs = z.infer<typeof inputSchema>;
 
@@ -16,9 +15,8 @@ type Props = {
 };
 
 export const ChatRenameInput = ({ name, onSubmit }: Props) => {
-  const dispatch = useAppDispatch();
-
   const { t } = useTranslation();
+  const dispatch = useAppDispatch();
 
   const {
     register,
