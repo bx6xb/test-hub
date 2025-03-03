@@ -10,7 +10,7 @@ import {
 import { marked } from 'marked';
 import { useEffect, useState } from 'react';
 import { GptResponse, MidjourneyResponse } from '../model';
-import { addAlert, setIsMessageSent } from '@/entities';
+import { addAlert, selectIsMessageSent, setIsMessageSent } from '@/entities';
 import {
   AIAvatar,
   AIMessageContainer,
@@ -38,7 +38,7 @@ export const AIMessage = ({
   aiId = 'gpt',
   aiVersion = 'gpt-4-1106-preview',
 }: Props) => {
-  const isMessageSent = useAppSelector(state => state.appSlice.isMessageSent);
+  const isMessageSent = useAppSelector(selectIsMessageSent);
   const dispatch = useAppDispatch();
   const [sseMessageContent, setSseMessageContent] = useState<string | string[]>('');
 

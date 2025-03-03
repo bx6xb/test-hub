@@ -1,10 +1,10 @@
-import { logout } from '@/entities';
+import { logout, selectUsername } from '@/entities';
 import { useAppDispatch, useAppSelector } from '@/shared';
 import { memo } from 'react';
 import { Name, NameAndWallet, UserAvatar, UserCardContainer, UserInfo, Wallet } from '../styles';
 
 export const UserCard = memo(() => {
-  const username = useAppSelector(state => state.authSlice.username);
+  const username = useAppSelector(selectUsername);
   const dispatch = useAppDispatch();
 
   const logoutHandler = () => dispatch(logout());

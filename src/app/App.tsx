@@ -1,11 +1,11 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
-import { checkIsAuth } from '@/entities';
+import { checkIsAuth, selectIsAuth } from '@/entities';
 import { Preloader, ProtectedRoute, useAppDispatch, useAppSelector } from '@/shared';
 import { ChatPage, LoginPage } from '@/pages';
 import { Alert } from '@/features';
 
 export const App = () => {
-  const isAuth = useAppSelector(state => state.authSlice.isAuth);
+  const isAuth = useAppSelector(selectIsAuth);
   const dispatch = useAppDispatch();
 
   if (isAuth === null) {

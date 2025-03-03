@@ -8,9 +8,10 @@ import {
 } from '@/shared';
 import { useState } from 'react';
 import { Model, Select } from '../styles';
+import { selectIsMessageSent } from '@/entities';
 
 export const AIModelSelect = () => {
-  const isChatDisabled = useAppSelector(state => state.appSlice.isChatDisabled);
+  const isMessageSent = useAppSelector(selectIsMessageSent);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [setModel, { isLoading }] = useSetChatNameOrModelMutation();
   const chat = useGetChatInfo();
@@ -43,7 +44,7 @@ export const AIModelSelect = () => {
       selected={model_id}
       getModalState={setIsModalOpen}
     >
-      <Select $disabled={isLoading || isChatDisabled}>
+      <Select $disabled={isLoading || isMessageSent}>
         <img src={`/images/${model_id}.svg`} alt={model_id + ' logo'} />
         {aiName}
         <Arrow isArrowUp={isModalOpen} />

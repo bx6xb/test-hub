@@ -2,9 +2,10 @@ import { Chat } from './Chat';
 import { Loader, useAppSelector, useFetchChatsQuery } from '@/shared';
 import { memo } from 'react';
 import { ChatsContainer } from '../styles';
+import { selectSearchTerm } from '@/entities';
 
 export const Chats = memo(() => {
-  const searchTerm = useAppSelector(state => state.appSlice.searchTerm);
+  const searchTerm = useAppSelector(selectSearchTerm);
 
   const { data, isLoading } = useFetchChatsQuery({});
 

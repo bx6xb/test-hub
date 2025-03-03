@@ -1,10 +1,10 @@
-import { setSearchTerm } from '@/entities';
+import { selectSearchTerm, setSearchTerm } from '@/entities';
 import { useAppDispatch, useAppSelector } from '@/shared';
 import { ChangeEvent, useEffect, useRef, useState } from 'react';
 import { Input, SearchButton, SearchContainer } from '../../styles';
 
 export const Search = () => {
-  const searchTerm = useAppSelector(state => state.appSlice.searchTerm);
+  const searchTerm = useAppSelector(selectSearchTerm);
   const dispatch = useAppDispatch();
   const [isSearching, setIsSearching] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);

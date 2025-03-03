@@ -10,12 +10,12 @@ import {
 } from '@/shared';
 import { useTranslation } from 'react-i18next';
 import { ChatInputContainer, Input, SendMessage } from '../styles';
-import { setIsMessageSent } from '@/entities';
+import { selectIsMessageSent, setIsMessageSent } from '@/entities';
 
 type Inputs = z.infer<typeof inputSchema>;
 
 export const ChatInput = () => {
-  const isMessageSent = useAppSelector(state => state.appSlice.isMessageSent);
+  const isMessageSent = useAppSelector(selectIsMessageSent);
   const dispatch = useAppDispatch();
   const { chatId } = useGetChatId();
   const { t } = useTranslation();
