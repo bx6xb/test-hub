@@ -6,5 +6,5 @@ export type AlertType = {
 export type AppState = {
   searchTerm: string;
   alerts: AlertType[];
-  isChatDisabled: boolean;
+  isMessageSent: boolean;
 };

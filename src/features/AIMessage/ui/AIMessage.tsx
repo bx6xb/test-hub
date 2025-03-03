@@ -5,11 +5,12 @@ import {
   CopyText,
   Nullable,
   useAppDispatch,
+  useAppSelector,
 } from '@/shared';
 import { marked } from 'marked';
 import { useEffect, useState } from 'react';
 import { GptResponse, MidjourneyResponse } from '../model';
-import { addAlert, setIsChatDisabled } from '@/entities';
+import { addAlert, setIsMessageSent } from '@/entities';
 import {
   AIAvatar,
   AIMessageContainer,
@@ -36,8 +37,9 @@ export const AIMessage = ({
   aiId = 'gpt',
   aiVersion = 'gpt-4-1106-preview',
 }: Props) => {
-  const [sseMessageContent, setSseMessageContent] = useState<string | string[]>('');
+  const isMessageSent = useAppSelector(state => state.appSlice.isMessageSent);
   const dispatch = useAppDispatch();
+  const [sseMessageContent, setSseMessageContent] = useState<string | string[]>('');
 
   const getGptResponse = (data: GptResponse) => {
     const message = data.data.message.content;
@@ -51,19 +53,19 @@ export const AIMessage = ({
     console.log(data.data.message.images);
   };
 
-  const onMidjourneyError = (message: string) => {
+  const onError = (message: string) => {
     dispatch(addAlert({ message, type: 'error' }));
   };
 
-  const onAbort = () => dispatch(setIsChatDisabled(false));
+  const onAbort = () => dispatch(setIsMessageSent(false));
 
   useEffect(() => {
-    if (!messageText) {
+    if (!messageText && isMessageSent) {
       if (aiId === 'gpt') {
-        dispatch(setIsChatDisabled(true));
         const abortSSE = connectSSE<GptResponse>({
           uri: `chat/${chatId}/stream`,
           getResponse: getGptResponse,
+          onError,
           onAbort,
         });
 
@@ -73,11 +75,10 @@ export const AIMessage = ({
           abortSSE();
         };
       } else if (aiId === 'midjourney') {
-        dispatch(setIsChatDisabled(true));
         const abortSSE = connectSSE<MidjourneyResponse>({
           uri: `chat/${chatId}/stream`,
           getResponse: getMidjourneyResponse,
-          onError: onMidjourneyError,
+          onError,
           onAbort,
         });
 
