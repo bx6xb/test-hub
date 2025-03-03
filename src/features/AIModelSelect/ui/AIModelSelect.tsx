@@ -30,7 +30,7 @@ export const AIModelSelect = () => {
     id,
     label: (
       <Model key={id}>
-        <img src={`/images/${id}.svg`} alt={label + ' logo'} />
+        <img src={`/images/${id}.svg`} alt={`${label} logo`} />
         {label}
       </Model>
     ),
@@ -45,7 +45,7 @@ export const AIModelSelect = () => {
       getModalState={setIsModalOpen}
     >
       <Select $disabled={isLoading || isMessageSent}>
-        <img src={`/images/${model_id}.svg`} alt={model_id + ' logo'} />
+        <img src={`/images/${model_id}.svg`} alt={`${model_id} logo`} />
         {aiName}
         <Arrow isArrowUp={isModalOpen} />
       </Select>
