@@ -61,6 +61,5 @@ export const useAIMessage = ({ chatId, messageText, aiId }: Props) => {
 
   return {
     content,
-    sseMessageContent,
   };
 };

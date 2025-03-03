@@ -1,4 +1,4 @@
-import { AI_MODELS, AIModelsValues, CopyText, Nullable } from '@/shared';
+import { AI_MODELS, AIModelsValues, CopyText, Loader, Nullable } from '@/shared';
 import { marked } from 'marked';
 import {
   AIAvatar,
@@ -28,7 +28,7 @@ export const AIMessage = ({
   aiId = 'gpt',
   aiVersion = 'gpt-4-1106-preview',
 }: Props) => {
-  const { content, sseMessageContent } = useAIMessage({ chatId, messageText, aiId });
+  const { content } = useAIMessage({ chatId, messageText, aiId });
 
   return (
     <AIMessageContainer>
@@ -40,15 +40,17 @@ export const AIMessage = ({
           <AIVersion>{aiVersion}</AIVersion>
         </AIModel>
 
-        {aiId === 'gpt' && (
+        {aiId === 'gpt' && content ? (
           <MessageText>
             <Content dangerouslySetInnerHTML={{ __html: marked(content as string) }} />
           </MessageText>
+        ) : (
+          <Loader />
         )}
         {aiId === 'midjourney' && (
           <Images>
-            {((sseMessageContent || []) as string[]).map(url => (
-              <img src={url} alt="midjorney image" />
+            {((content || []) as string[]).map(url => (
+              <img src={url} alt="generated image" />
             ))}
           </Images>
         )}
