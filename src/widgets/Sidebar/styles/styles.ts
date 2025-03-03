@@ -45,7 +45,7 @@ export const Hamburger = styled.div<{ $closeHambIcon: boolean }>`
   position: fixed;
   z-index: 2;
   top: 40px;
-  right: 40px;
+  right: 50px;
   display: flex;
   flex-direction: column;
   justify-content: center;

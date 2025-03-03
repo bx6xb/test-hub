@@ -4,6 +4,7 @@ import styled, { keyframes } from 'styled-components';
 export const AlertContainer = styled.div`
   max-width: 400px;
   width: 100%;
+  padding: 16px;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -11,6 +12,7 @@ export const AlertContainer = styled.div`
   left: 50%;
   transform: translateX(-50%);
   top: 20px;
+  z-index: 3;
 `;
 
 // AlertMessage
