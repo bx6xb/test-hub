@@ -6,6 +6,7 @@ export const Dropdown = ({
   options,
   children,
   selected,
+  disabled,
   getModalState,
   onOptionChange,
   ...position
@@ -33,7 +34,7 @@ export const Dropdown = ({
   };
 
   return (
-    <DropdownContainer>
+    <DropdownContainer $disabled={disabled}>
       <div onMouseDown={onChildrenClick}>{children}</div>
 
       <DropdownWrapper $isOpen={isOpen} {...position}>

@@ -43,8 +43,9 @@ export const AIModelSelect = () => {
       onOptionChange={onOptionChange}
       selected={model_id}
       getModalState={setIsModalOpen}
+      disabled={isLoading || isMessageSent}
     >
-      <Select $disabled={isLoading || isMessageSent}>
+      <Select>
         <img src={`/images/${model_id}.svg`} alt={`${model_id} logo`} />
         {aiName}
         <Arrow isArrowUp={isModalOpen} />

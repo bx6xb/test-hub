@@ -1,6 +1,6 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
-export const Select = styled.div<{ $disabled: boolean }>`
+export const Select = styled.div`
   min-width: 147px;
   height: 40px;
   padding: 10px 16px;
@@ -12,13 +12,6 @@ export const Select = styled.div<{ $disabled: boolean }>`
   border-radius: 10px;
   cursor: pointer;
   user-select: none;
-
-  ${({ $disabled }) =>
-    $disabled &&
-    css`
-      pointer-events: none;
-      filter: brightness(0.7);
-    `}
 `;
 export const Model = styled.div`
   display: flex;

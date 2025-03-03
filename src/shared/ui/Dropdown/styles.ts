@@ -14,8 +14,15 @@ export const fadeIn = keyframes`
 `;
 
 // styles
-export const DropdownContainer = styled.div`
+export const DropdownContainer = styled.div<{ $disabled?: boolean }>`
   position: relative;
+
+  ${({ $disabled }) =>
+    $disabled &&
+    css`
+      pointer-events: none;
+      filter: brightness(0.7);
+    `}
 `;
 export const DropdownWrapper = styled.div<Position & { $isOpen: boolean }>`
   position: absolute;
