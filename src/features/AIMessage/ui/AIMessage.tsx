@@ -1,16 +1,5 @@
-import {
-  AI_MODELS,
-  AIModelsValues,
-  connectSSE,
-  CopyText,
-  Nullable,
-  useAppDispatch,
-  useAppSelector,
-} from '@/shared';
+import { AI_MODELS, AIModelsValues, CopyText, Nullable } from '@/shared';
 import { marked } from 'marked';
-import { useEffect, useState } from 'react';
-import { GptResponse, MidjourneyResponse } from '../model';
-import { addAlert, selectIsMessageSent, setIsMessageSent } from '@/entities';
 import {
   AIAvatar,
   AIMessageContainer,
@@ -22,6 +11,7 @@ import {
   MessageContent,
   MessageText,
 } from '../styles';
+import { useAIMessage } from '../hooks';
 
 type Props = {
   messageText: Nullable<string>;
@@ -38,61 +28,7 @@ export const AIMessage = ({
   aiId = 'gpt',
   aiVersion = 'gpt-4-1106-preview',
 }: Props) => {
-  const isMessageSent = useAppSelector(selectIsMessageSent);
-  const dispatch = useAppDispatch();
-  const [sseMessageContent, setSseMessageContent] = useState<string | string[]>('');
-
-  const getGptResponse = (data: GptResponse) => {
-    const message = data.data.message.content;
-
-    if (message) {
-      setSseMessageContent(message);
-    }
-  };
-
-  const getMidjourneyResponse = (data: MidjourneyResponse) => {
-    console.log(data.data.message.images);
-  };
-
-  const onError = (message: string) => {
-    dispatch(addAlert({ message, type: 'error' }));
-  };
-
-  const onAbort = () => dispatch(setIsMessageSent(false));
-
-  useEffect(() => {
-    if (!messageText && isMessageSent) {
-      if (aiId === 'gpt') {
-        const abortSSE = connectSSE<GptResponse>({
-          uri: `chat/${chatId}/stream`,
-          getResponse: getGptResponse,
-          onError,
-          onAbort,
-        });
-
-        return () => {
-          onAbort();
-          console.log('SSE closed');
-          abortSSE();
-        };
-      } else if (aiId === 'midjourney') {
-        const abortSSE = connectSSE<MidjourneyResponse>({
-          uri: `chat/${chatId}/stream`,
-          getResponse: getMidjourneyResponse,
-          onError,
-          onAbort,
-        });
-
-        return () => {
-          onAbort();
-          console.log('SSE closed');
-          abortSSE();
-        };
-      }
-    }
-  }, []);
-
-  const content = messageText || sseMessageContent;
+  const { content, sseMessageContent } = useAIMessage({ chatId, messageText, aiId });
 
   return (
     <AIMessageContainer>
