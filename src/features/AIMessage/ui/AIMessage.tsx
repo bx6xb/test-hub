@@ -16,6 +16,7 @@ import {
   AIMessageContainer,
   AIModel,
   AIVersion,
+  Content,
   CopyAndTime,
   Images,
   MessageContent,
@@ -104,7 +105,9 @@ export const AIMessage = ({
         </AIModel>
 
         {aiId === 'gpt' && (
-          <MessageText dangerouslySetInnerHTML={{ __html: marked(content as string) }} />
+          <MessageText>
+            <Content dangerouslySetInnerHTML={{ __html: marked(content as string) }} />
+          </MessageText>
         )}
         {aiId === 'midjourney' && (
           <Images>

@@ -37,13 +37,52 @@ export const AIVersion = styled.div`
   font-size: 14px;
   font-weight: 500;
 `;
-export const MessageText = styled.p`
+export const MessageText = styled.div`
+  max-width: 100%;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  white-space: pre-wrap;
   font-size: 18px;
   font-weight: 400;
+  overflow: hidden;
+
+  p,
+  pre,
+  code,
+  blockquote,
+  table,
+  img {
+    max-width: 100%;
+    overflow-x: auto;
+    word-break: break-word;
+  }
+
+  pre {
+    white-space: pre-wrap;
+    overflow-x: auto;
+    background-color: black;
+    padding: 8px;
+    border-radius: 4px;
+  }
+
+  table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
 
   @media (max-width: 768px) {
     font-size: 14px;
   }
+`;
+export const Content = styled.div`
+  max-width: 100%;
+  overflow: hidden;
 `;
 export const Images = styled.div`
   width: 200px;
